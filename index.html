@@ -273,6 +273,39 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
+        /* Benefits Grid Styles */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 2rem;
+            max-width: 600px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: white;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .benefit-item i {
+            color: #ffd700;
+            font-size: 1.2rem;
+            min-width: 20px;
+            margin-top: 2px;
+        }
+
+        .benefit-item strong {
+            color: #ffd700;
+            display: block;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
         /* Categories Section */
         .categories {
             max-width: 1200px;
@@ -650,6 +683,15 @@
                 font-size: 1.1rem;
             }
 
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .benefit-item {
+                font-size: 0.9rem;
+            }
+
             .categories-grid {
                 grid-template-columns: 1fr;
             }
@@ -894,9 +936,29 @@
     <!-- Hero Section with Diagonal Overlay -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Premium LG Products on Subscription</h1>
-            <p>Experience the latest LG home appliances with flexible subscription plans designed for Malaysian homes</p>
+            <h1>Smart Malaysians Don't Buy Appliances - They Subscribe & Save</h1>
+            <p>Stop draining your savings on expensive purchases. Start from RM80/month and watch your money grow instead.</p>
             <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button" target="_blank">Most Subscription Plans</a>
+            
+            <!-- BENEFITS GRID -->
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span>Keep RM 3,000+ in your savings <strong>instead of spending on appliances</strong></span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Watch your money grow <strong>while enjoying premium products</strong></span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Zero repair costs <strong>protect your savings from surprises</strong></span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Free upgrades <strong>mean you never waste money on outdated tech</strong></span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1192,9 +1254,9 @@
             'stylers': 'https://products.lgsubscribes.com.my/styler'
         };
 
-        // Header navigation URLs
+        // Header navigation URLs - UPDATED HOME LINK
         const headerLinks = {
-            'home': 'https://lgsubscribes.com.my/',
+            'home': 'https://successnm.github.io/DEN-LG-Homepage/',
             'promotions': 'https://products.lgsubscribes.com.my/promotions',
             'become-agent': 'https://successnm.github.io/LGSubscribe/'
         };
