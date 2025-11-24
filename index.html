@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LG Premium Appliances - Smart Navigation</title>
+    <title>LG Premium Appliances - Subscribe & Save RM3,000+ | LG Subscribes</title>
+    <meta name="description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades. Join 5,000+ happy Malaysian families.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -34,7 +35,6 @@
             position: sticky;
             top: 0;
             z-index: 1001;
-            transition: transform 0.3s ease;
         }
 
         .header-container {
@@ -116,7 +116,7 @@
             cursor: pointer;
         }
 
-        /* Smart Category Navigation */
+        /* ENHANCED: Quick Category Navigation */
         .quick-category-nav {
             background: white;
             padding: 0.8rem 20px;
@@ -135,12 +135,93 @@
             pointer-events: none;
         }
 
+        .categories-container {
+            position: relative;
+        }
+
+        /* ENHANCED: Swipe Indicator */
+        .swipe-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            transition: opacity 0.5s ease;
+        }
+
+        .swipe-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fade-edge {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #e4002b, transparent);
+            opacity: 0.8;
+        }
+
+        .fade-edge.right {
+            background: linear-gradient(270deg, #e4002b, transparent);
+        }
+
+        .swipe-hint {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            background: rgba(228, 0, 43, 0.1);
+            border-radius: 15px;
+            color: #e4002b;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+            animation: swipe-pulse 2s infinite;
+        }
+
+        .swipe-hint i {
+            font-size: 0.6rem;
+            animation: arrow-bounce 2s infinite;
+        }
+
+        .swipe-hint i:first-child {
+            animation-delay: 0.5s;
+        }
+
+        .swipe-hint i:last-child {
+            animation-delay: 1s;
+        }
+
+        @keyframes swipe-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                background: rgba(228, 0, 43, 0.1);
+            }
+            50% { 
+                transform: scale(1.02);
+                background: rgba(228, 0, 43, 0.15);
+            }
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% { 
+                transform: translateX(0);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateX(3px);
+                opacity: 1;
+            }
+        }
+
+        /* ENHANCED: Categories Scroll */
         .categories-scroll {
             display: flex;
             gap: 8px;
             overflow-x: auto;
             scrollbar-width: none;
-            padding-bottom: 2px;
+            padding-bottom: 5px;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
         }
 
         .categories-scroll::-webkit-scrollbar {
@@ -172,20 +253,6 @@
             transform: scale(0.95);
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: #e4002b;
-            transform: scaleX(0);
-            transform-origin: left;
-            z-index: 1002;
-            transition: transform 0.3s ease;
-        }
-
         /* Hero Section */
         .hero {
             position: relative;
@@ -193,7 +260,7 @@
             background-size: cover;
             color: white;
             text-align: center;
-            padding: 80px 20px 50px;
+            padding: 100px 20px 60px;
         }
 
         .hero-content {
@@ -299,6 +366,73 @@
             color: #e4002b;
         }
 
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 2rem 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 60px 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: #e4002b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+        }
+
+        /* Search Results */
+        .search-results {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem auto;
+            max-width: 500px;
+            text-align: center;
+            border: 2px solid #e4002b;
+            display: none;
+        }
+
+        .results-info {
+            font-weight: 600;
+            color: #e4002b;
+        }
+
+        .results-info span {
+            font-weight: 800;
+        }
+
+        .no-results {
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 400px;
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            display: none;
+        }
+
         /* Featured Products */
         .featured-section {
             padding: 3rem 20px;
@@ -343,7 +477,7 @@
             margin: 0 auto;
         }
 
-        .featured-card {
+        .featured-card, .product-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -352,7 +486,7 @@
             cursor: pointer;
         }
 
-        .featured-card:active {
+        .featured-card:active, .product-card:active {
             transform: translateY(-5px);
         }
 
@@ -386,7 +520,8 @@
             transition: transform 0.5s;
         }
 
-        .featured-card:active .card-image img {
+        .featured-card:active .card-image img,
+        .product-card:active .card-image img {
             transform: scale(1.05);
         }
 
@@ -417,6 +552,7 @@
             color: #25D366;
         }
 
+        /* WhatsApp buttons */
         .card-button {
             display: flex;
             align-items: center;
@@ -481,19 +617,6 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:active {
-            transform: translateY(-5px);
         }
 
         .product-card .card-image {
@@ -681,11 +804,6 @@
             .nav-links a {
                 padding: 0.5rem 0;
                 border-bottom: none;
-                transition: color 0.3s;
-            }
-
-            .nav-links a:hover {
-                color: #ffd700;
             }
 
             .hero h1 {
@@ -712,6 +830,7 @@
                 grid-template-columns: repeat(4, 1fr);
             }
 
+            /* ENHANCED: Desktop hover effects for categories */
             .category-pill:hover:not(.active) {
                 background: #e9ecef;
                 border-color: #dee2e6;
@@ -731,11 +850,8 @@
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator" id="scrollIndicator"></div>
-
     <!-- Header -->
-    <header id="mainHeader">
+    <header>
         <div class="header-container">
             <a href="https://successnm.github.io/DEN-LG-Homepage/" class="logo">
                 <img src="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg" alt="LG Subscribes" class="logo-image">
@@ -758,14 +874,28 @@
         </div>
     </header>
 
-    <!-- Smart Category Navigation -->
+    <!-- ENHANCED: Quick Category Navigation -->
     <section class="quick-category-nav" id="categoryNav">
-        <div class="categories-scroll">
-            <a href="#featured" class="category-pill active">🔥 Popular</a>
-            <a href="#home-essentials" class="category-pill">🏠 Home</a>
-            <a href="#entertainment" class="category-pill">📺 TV & Audio</a>
-            <a href="#kitchen" class="category-pill">👨‍🍳 Kitchen</a>
-            <a href="#cleaning" class="category-pill">✨ Cleaning</a>
+        <div class="categories-container">
+            <div class="swipe-indicator" id="swipeIndicator">
+                <div class="fade-edge"></div>
+                <div class="swipe-hint">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Swipe for more categories</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="fade-edge right"></div>
+            </div>
+            
+            <div class="categories-scroll" id="categoriesScroll">
+                <a href="#featured" class="category-pill active">🔥 Popular</a>
+                <a href="#home-essentials" class="category-pill">🏠 Home</a>
+                <a href="#entertainment" class="category-pill">📺 TV & Audio</a>
+                <a href="#kitchen" class="category-pill">👨‍🍳 Kitchen</a>
+                <a href="#cleaning" class="category-pill">✨ Cleaning</a>
+                <a href="#laundry" class="category-pill">👕 Laundry</a>
+                <a href="#air-care" class="category-pill">💨 Air Care</a>
+            </div>
         </div>
     </section>
 
@@ -804,6 +934,26 @@
                     <i class="fas fa-chart-bar"></i> View Most Popular Plans
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="🔍 Search for products...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="search-results" id="search-results">
+            <div class="results-info">
+                <span id="results-count">0</span> products found for "<span id="search-term"></span>"
+            </div>
+        </div>
+
+        <div class="no-results" id="no-results">
+            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: #e0e0e0;"></i>
+            <h3>No products found</h3>
+            <p>Try adjusting your search terms</p>
         </div>
     </section>
 
@@ -929,6 +1079,44 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Dehumidifiers -->
+                <div class="product-card" data-category="dehumidifiers">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/air-purifier/dry-shoes-case/gallery/gallery/dehumidifier-mojave-2025-accessory-drying-case-gallery-gallery-2010-01.jpg" alt="Dehumidifiers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dehumidifiers</h3>
+                        <p>Control humidity for healthier living</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> High moisture removal</li>
+                            <li><i class="fas fa-check"></i> Auto defrost</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                        </ul>
+                        <button class="card-button" data-product="dehumidifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Water Purifiers -->
+                <div class="product-card" data-category="water-purifiers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Water Purifiers</h3>
+                        <p>Enjoy clean, safe drinking water</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Multi-stage filtration</li>
+                            <li><i class="fas fa-check"></i> Hot & cold water</li>
+                            <li><i class="fas fa-check"></i> UV sterilization</li>
+                        </ul>
+                        <button class="card-button" data-product="water-purifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -957,58 +1145,21 @@
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Kitchen -->
-        <div class="category-group" id="kitchen">
-            <div class="group-header">
-                <div class="group-icon">👨‍🍳</div>
-                <h3 class="group-title">Kitchen</h3>
-            </div>
-            <div class="products-grid">
-                <!-- Refrigerators -->
-                <div class="product-card" data-category="refrigerators">
+                <!-- Sound Bars -->
+                <div class="product-card" data-category="soundbar">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerators" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars" loading="lazy">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Refrigerators</h3>
-                        <p>Keep food fresh with smart cooling</p>
+                        <h3 class="card-title">Sound Bars</h3>
+                        <p>Cinema-quality audio at home</p>
                         <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Smart cooling system</li>
-                            <li><i class="fas fa-check"></i> Door-in-door design</li>
-                            <li><i class="fas fa-check"></i> Energy saving</li>
+                            <li><i class="fas fa-check"></i> Dolby Atmos support</li>
+                            <li><i class="fas fa-check"></i> Wireless connectivity</li>
+                            <li><i class="fas fa-check"></i> Multiple sound modes</li>
                         </ul>
-                        <button class="card-button" data-product="refrigerator">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Cleaning -->
-        <div class="category-group" id="cleaning">
-            <div class="group-header">
-                <div class="group-icon">✨</div>
-                <h3 class="group-title">Cleaning</h3>
-            </div>
-            <div class="products-grid">
-                <!-- Vacuum Cleaners -->
-                <div class="product-card" data-category="vacuum-cleaners">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/vacuum-cleaner/a9x-rsteam-dcbrlml/gallery/2010x1334/handstick-a9x-2025-s9bwndtbdw-a9x-rsteam-my-calmingbeige-01-front-vaccum.jpg" alt="Vacuum Cleaners" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Vacuum Cleaners</h3>
-                        <p>Powerful cleaning for spotless homes</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Cordless convenience</li>
-                            <li><i class="fas fa-check"></i> Powerful suction</li>
-                            <li><i class="fas fa-check"></i> Long battery life</li>
-                        </ul>
-                        <button class="card-button" data-product="vacuum-cleaner">
+                        <button class="card-button" data-product="soundbar">
                             <i class="fab fa-whatsapp"></i> Subscribe
                         </button>
                     </div>
@@ -1050,20 +1201,41 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">
-                    How much can I save with subscription?
+                    How much can I save with subscription vs buying?
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    Most customers save RM2,000 to RM5,000 upfront while enjoying premium appliances.
+                    Most customers save RM2,000 to RM5,000 upfront while enjoying premium appliances. Instead of paying RM3,000-8,000 upfront, you pay from RM80/month and keep your savings invested.
                 </div>
             </div>
+            
             <div class="faq-item">
                 <div class="faq-question">
                     What happens if the appliance breaks down?
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    We cover ALL repair and maintenance costs! Your subscription includes complete protection.
+                    We cover ALL repair and maintenance costs! Your subscription includes complete protection - no extra charges for parts, labor, or service calls. We'll repair or replace within 48 hours.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I upgrade to newer models?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! We offer free upgrades when new models launch. You get to enjoy the latest technology without the hassle of selling your old appliance or paying upgrade fees.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there any long-term contract or commitment?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No long-term lock-in! You can pause or cancel your subscription anytime with 30 days notice. We're confident you'll love the service that 98% of our customers continue their subscriptions.
                 </div>
             </div>
         </div>
@@ -1120,110 +1292,206 @@
     </nav>
 
     <script>
-        // Smart Scroll Navigation
-        let lastScrollTop = 0;
-        const categoryNav = document.getElementById('categoryNav');
-        const scrollIndicator = document.getElementById('scrollIndicator');
-        const backToTop = document.getElementById('backToTop');
+        // PRODUCT URL MAPPING - CRITICAL FUNCTION
+        const productUrls = {
+            'water-purifiers': 'https://products.lgsubscribes.com.my/water-purifier',
+            'air-purifiers': 'https://products.lgsubscribes.com.my/air-purifier',
+            'air-conditioners': 'https://products.lgsubscribes.com.my/air-conditioner',
+            'vacuum-cleaners': 'https://products.lgsubscribes.com.my/vacuum-cleaner',
+            'washer-dryers': 'https://products.lgsubscribes.com.my/washer-dryer',
+            'refrigerators': 'https://products.lgsubscribes.com.my/refrigerator',
+            'tv': 'https://products.lgsubscribes.com.my/tvs',
+            'soundbar': 'https://products.lgsubscribes.com.my/soundbar',
+            'dehumidifiers': 'https://products.lgsubscribes.com.my/dehumidifier',
+            'dishwashers': 'https://products.lgsubscribes.com.my/dishwasher',
+            'stylers': 'https://products.lgsubscribes.com.my/styler'
+        };
 
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Scroll progress indicator
-            const winHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const scrollPercent = scrollTop / (docHeight - winHeight);
-            scrollIndicator.style.transform = `scaleX(${scrollPercent})`;
-            
-            // Hide/show category navigation based on scroll direction
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down - hide navigation
-                categoryNav.classList.add('hidden');
-            } else {
-                // Scrolling up - show navigation
-                categoryNav.classList.remove('hidden');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-            
-            // Show/hide back to top button
-            if (scrollTop > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality - CRITICAL
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const closeMenu = document.getElementById('closeMenu');
 
-        // Back to top functionality
-        backToTop.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Show category nav when going to top
-            categoryNav.classList.remove('hidden');
-        });
-
-        // Mobile menu functionality
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const closeMenu = document.getElementById('closeMenu');
-
-        mobileMenuToggle.addEventListener('click', function() {
-            navLinks.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        });
-
-        // FAQ Accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const item = this.parentElement;
-                item.classList.toggle('active');
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.add('active');
             });
-        });
 
-        // Category Navigation
-        const categoryPills = document.querySelectorAll('.category-pill');
-        categoryPills.forEach(pill => {
-            pill.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                categoryPills.forEach(p => p.classList.remove('active'));
-                this.classList.add('active');
-                
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 100;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
+            closeMenu.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
                 }
             });
-        });
 
-        // Product interactions
-        const productCards = document.querySelectorAll('.product-card, .featured-card');
-        const cardButtons = document.querySelectorAll('.card-button');
+            // Back to Top - CRITICAL
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
 
-        cardButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const product = this.dataset.product || 'LG appliance';
-                const message = `Hi, I want to subscribe to ${product}. What's the next step?`;
-                window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // FAQ Accordion - CRITICAL
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // ENHANCED: Category Navigation with Smart Scroll
+            let lastScrollTop = 0;
+            const categoryNav = document.getElementById('categoryNav');
+            
+            if (categoryNav) {
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Hide/show category navigation based on scroll direction
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        categoryNav.classList.add('hidden');
+                    } else {
+                        categoryNav.classList.remove('hidden');
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+            }
+
+            // ENHANCED: Swipe Indicators for Categories
+            const categoriesScroll = document.getElementById('categoriesScroll');
+            const swipeIndicator = document.getElementById('swipeIndicator');
+            
+            if (categoriesScroll && swipeIndicator) {
+                categoriesScroll.addEventListener('scroll', function() {
+                    swipeIndicator.classList.add('hidden');
+                });
+                
+                categoriesScroll.addEventListener('touchstart', function() {
+                    swipeIndicator.classList.add('hidden');
+                });
+                
+                // Also hide on mouse scroll
+                categoriesScroll.addEventListener('wheel', function() {
+                    swipeIndicator.classList.add('hidden');
+                });
+            }
+
+            // ENHANCED: Category Click with Smooth Scroll
+            const categoryPills = document.querySelectorAll('.category-pill');
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Remove active class from all pills
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    // Add active class to clicked pill
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Search Functionality - CRITICAL
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const allCards = document.querySelectorAll('.product-card, .featured-card');
+            const searchResults = document.getElementById('search-results');
+            const noResults = document.getElementById('no-results');
+            const resultsCount = document.getElementById('results-count');
+            const searchTerm = document.getElementById('search-term');
+
+            function performSearch() {
+                const searchValue = searchInput.value.toLowerCase().trim();
+                
+                let visibleCount = 0;
+                
+                allCards.forEach(card => {
+                    const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                    const cardDescription = card.querySelector('p').textContent.toLowerCase();
+                    
+                    const matchesSearch = searchValue === '' || 
+                        cardTitle.includes(searchValue) || 
+                        cardDescription.includes(searchValue);
+                    
+                    if (matchesSearch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                if (searchValue !== '') {
+                    searchResults.style.display = 'block';
+                    resultsCount.textContent = visibleCount;
+                    searchTerm.textContent = searchValue;
+                    
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
+                } else {
+                    searchResults.style.display = 'none';
+                    noResults.style.display = 'none';
+                }
+            }
+
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+
+            // Product Card Clicks - CRITICAL FUNCTION
+            const productCards = document.querySelectorAll('.product-card, .featured-card');
+            productCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't navigate if clicking subscribe button
+                    if (e.target.classList.contains('card-button') || 
+                        e.target.closest('.card-button')) {
+                        return;
+                    }
+                    
+                    const productCategory = this.dataset.category;
+                    const productUrl = productUrls[productCategory];
+                    
+                    if (productUrl) {
+                        window.open(productUrl, '_blank');
+                    }
+                });
+            });
+
+            // Subscribe Buttons - CRITICAL
+            const subscribeButtons = document.querySelectorAll('.card-button');
+            subscribeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const product = this.dataset.product || 'LG appliance';
+                    const message = `Hi, I want to subscribe to ${product}. What's the next step?`;
+                    window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
+                });
             });
         });
     </script>
