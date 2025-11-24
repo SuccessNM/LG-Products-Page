@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LG Premium Appliances - Subscribe & Save RM3,000+ | LG Subscribes</title>
-    <meta name="description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades. Join 5,000+ happy Malaysian families.">
+    <title>LG Premium Appliances - Smart Navigation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -26,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Header - Mobile First */
+        /* Header */
         header {
             background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
             color: white;
@@ -35,6 +34,7 @@
             position: sticky;
             top: 0;
             z-index: 1001;
+            transition: transform 0.3s ease;
         }
 
         .header-container {
@@ -116,14 +116,84 @@
             cursor: pointer;
         }
 
-        /* Hero Section - Mobile First */
+        /* Smart Category Navigation */
+        .quick-category-nav {
+            background: white;
+            padding: 0.8rem 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 998;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .quick-category-nav.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .categories-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 2px;
+        }
+
+        .categories-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-pill {
+            padding: 10px 18px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #495057;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .category-pill.active {
+            background: #e4002b;
+            border-color: #e4002b;
+            color: white;
+            box-shadow: 0 4px 12px rgba(228, 0, 43, 0.3);
+        }
+
+        .category-pill:active {
+            transform: scale(0.95);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e4002b;
+            transform: scaleX(0);
+            transform-origin: left;
+            z-index: 1002;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hero Section */
         .hero {
             position: relative;
             background: linear-gradient(135deg, rgba(228, 0, 43, 0.95) 0%, rgba(165, 0, 36, 0.95) 100%), url('https://img.sanishtech.com/u/cf4369e7f0c173cc296a9fc8ac08381a.jpg') no-repeat center center;
             background-size: cover;
             color: white;
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 80px 20px 50px;
         }
 
         .hero-content {
@@ -166,7 +236,7 @@
             opacity: 0.95;
         }
 
-        /* Benefits Grid - Mobile First */
+        /* Benefits Grid */
         .benefits-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -196,7 +266,7 @@
             min-width: 25px;
         }
 
-        /* CTA Buttons - Mobile First */
+        /* CTA Buttons */
         .hero-cta-buttons {
             display: flex;
             flex-direction: column;
@@ -229,262 +299,7 @@
             color: #e4002b;
         }
 
-        .cta-button.red-theme {
-            background: #e4002b;
-            color: white;
-            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: buttonGlow 3s infinite;
-        }
-
-        .cta-button.red-theme:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(228, 0, 43, 0.5);
-        }
-
-        .cta-button.red-theme:active {
-            transform: translateY(-1px);
-        }
-
-        @keyframes buttonGlow {
-            0%, 100% { box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4); }
-            50% { box-shadow: 0 8px 25px rgba(228, 0, 43, 0.6); }
-        }
-
-        /* Enhanced Button Container */
-        .enhanced-button-container {
-            position: relative;
-            display: inline-block;
-            margin-top: 1.5rem;
-        }
-
-        /* Elegant Pulse Effect */
-        .pulse-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120%;
-            height: 150%;
-            border: 2px solid #e4002b;
-            border-radius: 60px;
-            transform: translate(-50%, -50%);
-            animation: pulse-ring 2s infinite;
-            pointer-events: none;
-        }
-
-        .pulse-ring:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .pulse-ring:nth-child(3) {
-            animation-delay: 1s;
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(0.8);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        /* Premium Badge */
-        .premium-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #b8860b;
-            padding: 4px 8px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        /* Sparkle Effects */
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffd700;
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 3s infinite;
-        }
-
-        .sparkle-1 { top: 10%; left: 15%; animation-delay: 0.5s; }
-        .sparkle-2 { top: 25%; right: 20%; animation-delay: 1.2s; }
-        .sparkle-3 { bottom: 15%; left: 25%; animation-delay: 0.8s; }
-        .sparkle-4 { bottom: 30%; right: 15%; animation-delay: 1.5s; }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Optimized Category Navigation - Mobile First */
-        .quick-category-nav {
-            background: white;
-            padding: 1.5rem 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 60px;
-            z-index: 999;
-        }
-
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .category-header h3 {
-            font-size: 1.1rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .scroll-hint {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #666;
-            font-size: 0.8rem;
-        }
-
-        .scroll-hint i {
-            font-size: 0.7rem;
-            animation: bounce 2s infinite;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .category-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px 10px;
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .category-card.active {
-            background: #e4002b;
-            border-color: #e4002b;
-            color: white;
-        }
-
-        .category-card:active {
-            transform: scale(0.95);
-        }
-
-        .category-icon {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .category-name {
-            font-size: 0.8rem;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-3px);
-            }
-            60% {
-                transform: translateY(-2px);
-            }
-        }
-
-        /* Search Section - Mobile First */
-        .search-section {
-            background: white;
-            padding: 2rem 20px;
-            border-bottom: 1px solid #e0e0e0;
-            text-align: center;
-        }
-
-        .search-box {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 16px 60px 16px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-
-        .search-box button {
-            position: absolute;
-            right: 8px;
-            top: 8px;
-            background: #e4002b;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-        }
-
-        /* Search Results Styling */
-        .search-results {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem auto;
-            max-width: 500px;
-            text-align: center;
-            border: 2px solid #e4002b;
-            display: none;
-        }
-
-        .results-info {
-            font-weight: 600;
-            color: #e4002b;
-        }
-
-        .results-info span {
-            font-weight: 800;
-        }
-
-        .no-results {
-            background: #f8f9fa;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 400px;
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-            display: none;
-        }
-
-        /* Featured Products - Mobile First */
+        /* Featured Products */
         .featured-section {
             padding: 3rem 20px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -528,7 +343,7 @@
             margin: 0 auto;
         }
 
-        .featured-card, .product-card {
+        .featured-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -537,7 +352,7 @@
             cursor: pointer;
         }
 
-        .featured-card:active, .product-card:active {
+        .featured-card:active {
             transform: translateY(-5px);
         }
 
@@ -571,8 +386,7 @@
             transition: transform 0.5s;
         }
 
-        .featured-card:active .card-image img,
-        .product-card:active .card-image img {
+        .featured-card:active .card-image img {
             transform: scale(1.05);
         }
 
@@ -603,7 +417,6 @@
             color: #25D366;
         }
 
-        /* CHANGED: WhatsApp buttons to GREEN */
         .card-button {
             display: flex;
             align-items: center;
@@ -627,7 +440,7 @@
             transform: translateY(2px);
         }
 
-        /* Products Section - Mobile First */
+        /* Products Section */
         .products-section {
             padding: 3rem 20px;
             background: white;
@@ -670,11 +483,24 @@
             gap: 1.5rem;
         }
 
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:active {
+            transform: translateY(-5px);
+        }
+
         .product-card .card-image {
             height: 180px;
         }
 
-        /* Trust Section - Mobile First */
+        /* Trust Section */
         .trust-section {
             padding: 3rem 20px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -697,14 +523,7 @@
             display: block;
         }
 
-        .testimonial {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-        }
-
-        /* FAQ Section - Mobile First */
+        /* FAQ Section */
         .faq-section {
             padding: 3rem 20px;
             background: #f8f9fa;
@@ -741,7 +560,7 @@
             display: block;
         }
 
-        /* Footer CTA - Mobile First */
+        /* Footer CTA */
         .footer-cta {
             background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
             color: white;
@@ -775,7 +594,7 @@
             color: #999;
         }
 
-        /* Floating Elements - Mobile First */
+        /* Floating Elements */
         .floating-whatsapp {
             position: fixed;
             bottom: 90px;
@@ -832,6 +651,7 @@
             text-decoration: none;
             z-index: 1000;
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .back-to-top.visible {
@@ -892,58 +712,10 @@
                 grid-template-columns: repeat(4, 1fr);
             }
 
-            /* Desktop version - keep horizontal scroll for larger screens */
-            .categories-grid {
-                display: flex;
-                gap: 10px;
-                overflow-x: auto;
-                padding-bottom: 5px;
-                scrollbar-width: none;
-            }
-            
-            .categories-grid::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .category-card {
-                flex: 0 0 auto;
-                min-width: 120px;
-                padding: 15px 20px;
-                transition: all 0.3s ease;
-            }
-            
-            .category-card:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            
-            .category-header {
-                display: none;
-            }
-
-            /* Enhanced desktop card interactions */
-            .featured-card, .product-card {
-                transition: transform 0.3s, box-shadow 0.3s;
-            }
-
-            .featured-card:hover, .product-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            }
-
-            .featured-card:hover .card-image img,
-            .product-card:hover .card-image img {
-                transform: scale(1.05);
-            }
-
-            /* Desktop button enhancements */
-            .cta-button {
-                transition: all 0.3s ease;
-            }
-
-            .cta-button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            .category-pill:hover:not(.active) {
+                background: #e9ecef;
+                border-color: #dee2e6;
+                transform: translateY(-2px);
             }
         }
 
@@ -955,50 +727,15 @@
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
-            .hero-content {
-                padding: 0 40px;
-            }
-
-            .section-header {
-                padding: 0 40px;
-            }
-        }
-
-        /* Large Desktop Optimizations */
-        @media (min-width: 1200px) {
-            .hero {
-                padding: 120px 20px 80px;
-            }
-
-            .featured-section, .products-section, .trust-section, .faq-section {
-                padding: 4rem 20px;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .featured-card:active, .product-card:active {
-                transform: translateY(-5px);
-            }
-            
-            .category-card:active {
-                transform: scale(0.95);
-            }
-            
-            .cta-button:active {
-                transform: translateY(2px);
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <div class="header-container">
             <a href="https://successnm.github.io/DEN-LG-Homepage/" class="logo">
                 <img src="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg" alt="LG Subscribes" class="logo-image">
@@ -1020,6 +757,17 @@
             </nav>
         </div>
     </header>
+
+    <!-- Smart Category Navigation -->
+    <section class="quick-category-nav" id="categoryNav">
+        <div class="categories-scroll">
+            <a href="#featured" class="category-pill active">🔥 Popular</a>
+            <a href="#home-essentials" class="category-pill">🏠 Home</a>
+            <a href="#entertainment" class="category-pill">📺 TV & Audio</a>
+            <a href="#kitchen" class="category-pill">👨‍🍳 Kitchen</a>
+            <a href="#cleaning" class="category-pill">✨ Cleaning</a>
+        </div>
+    </section>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1059,85 +807,12 @@
         </div>
     </section>
 
-    <!-- Optimized Quick Category Navigation -->
-    <section class="quick-category-nav">
-        <div class="category-header">
-            <h3>Browse Categories</h3>
-            <div class="scroll-hint">
-                <i class="fas fa-chevron-down"></i>
-                <span>Tap to explore</span>
-            </div>
-        </div>
-        
-        <div class="categories-grid">
-            <a href="#featured" class="category-card active">
-                <div class="category-icon">🔥</div>
-                <span class="category-name">Most Popular</span>
-            </a>
-            <a href="#home-essentials" class="category-card">
-                <div class="category-icon">🏠</div>
-                <span class="category-name">Home Essentials</span>
-            </a>
-            <a href="#entertainment" class="category-card">
-                <div class="category-icon">📺</div>
-                <span class="category-name">Entertainment</span>
-            </a>
-            <a href="#kitchen" class="category-card">
-                <div class="category-icon">👨‍🍳</div>
-                <span class="category-name">Kitchen</span>
-            </a>
-            <a href="#cleaning" class="category-card">
-                <div class="category-icon">✨</div>
-                <span class="category-name">Cleaning</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="🔍 Search for products...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
-        </div>
-        
-        <!-- Search Results Display -->
-        <div class="search-results" id="search-results">
-            <div class="results-info">
-                <span id="results-count">0</span> products found for "<span id="search-term"></span>"
-            </div>
-        </div>
-
-        <div class="no-results" id="no-results">
-            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: #e0e0e0;"></i>
-            <h3>No products found</h3>
-            <p>Try adjusting your search terms</p>
-        </div>
-    </section>
-
     <!-- Featured Products -->
     <section class="featured-section" id="featured">
         <div class="section-header">
             <div class="section-badge">🔥 MOST POPULAR</div>
             <h2 class="section-title">Money-Saving Favorites</h2>
             <p class="section-subtitle">These appliances save our customers the most money every month</p>
-            
-            <!-- Enhanced Button with Premium Effects -->
-            <div class="enhanced-button-container">
-                <div class="pulse-ring"></div>
-                <div class="pulse-ring"></div>
-                <div class="pulse-ring"></div>
-                
-                <div class="premium-badge">POPULAR</div>
-                
-                <div class="sparkle sparkle-1"></div>
-                <div class="sparkle sparkle-2"></div>
-                <div class="sparkle sparkle-3"></div>
-                <div class="sparkle sparkle-4"></div>
-                
-                <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button red-theme" target="_blank" style="display: inline-flex; width: auto; padding: 16px 32px;">
-                    <i class="fas fa-chart-bar"></i> View All Popular Plans
-                </a>
-            </div>
         </div>
 
         <div class="featured-grid">
@@ -1254,63 +929,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Dehumidifiers -->
-                <div class="product-card" data-category="dehumidifiers">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/air-purifier/dry-shoes-case/gallery/gallery/dehumidifier-mojave-2025-accessory-drying-case-gallery-gallery-2010-01.jpg" alt="Dehumidifiers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Dehumidifiers</h3>
-                        <p>Control humidity for healthier living</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> High moisture removal</li>
-                            <li><i class="fas fa-check"></i> Auto defrost</li>
-                            <li><i class="fas fa-check"></i> Energy efficient</li>
-                        </ul>
-                        <button class="card-button" data-product="dehumidifier">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Water Purifiers -->
-                <div class="product-card" data-category="water-purifiers">
-                    <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Water Purifiers</h3>
-                        <p>Enjoy clean, safe drinking water</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Multi-stage filtration</li>
-                            <li><i class="fas fa-check"></i> Hot & cold water</li>
-                            <li><i class="fas fa-check"></i> UV sterilization</li>
-                        </ul>
-                        <button class="card-button" data-product="water-purifier">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Stylers -->
-                <div class="product-card" data-category="stylers">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/images/lg-styler/s3wf_alwqeml_eaml_my_c/gallery/Z1.jpg" alt="Stylers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Stylers</h3>
-                        <p>Keep clothes fresh and wrinkle-free</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Steam refresh</li>
-                            <li><i class="fas fa-check"></i> Gentle on fabrics</li>
-                            <li><i class="fas fa-check"></i> Deodorizing function</li>
-                        </ul>
-                        <button class="card-button" data-product="styler">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1335,25 +953,6 @@
                             <li><i class="fas fa-check"></i> Dolby Atmos sound</li>
                         </ul>
                         <button class="card-button" data-product="tv">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Sound Bars -->
-                <div class="product-card" data-category="soundbar">
-                    <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Sound Bars</h3>
-                        <p>Cinema-quality audio at home</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Dolby Atmos support</li>
-                            <li><i class="fas fa-check"></i> Wireless connectivity</li>
-                            <li><i class="fas fa-check"></i> Multiple sound modes</li>
-                        </ul>
-                        <button class="card-button" data-product="soundbar">
                             <i class="fab fa-whatsapp"></i> Subscribe
                         </button>
                     </div>
@@ -1386,25 +985,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Dishwashers -->
-                <div class="product-card" data-category="dishwashers">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/dishwasher/dfc533fv-apyreml/gallery/gallery/free-standing-xd5-2024-dfc533fv-gallery-gallery-2010-01.jpg" alt="Dishwashers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Dishwashers</h3>
-                        <p>Effortless cleaning for your kitchen</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Multiple wash cycles</li>
-                            <li><i class="fas fa-check"></i> Quiet operation</li>
-                            <li><i class="fas fa-check"></i> Energy efficient</li>
-                        </ul>
-                        <button class="card-button" data-product="dishwasher">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1429,25 +1009,6 @@
                             <li><i class="fas fa-check"></i> Long battery life</li>
                         </ul>
                         <button class="card-button" data-product="vacuum-cleaner">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Washer Dryers -->
-                <div class="product-card" data-category="washer-dryers">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/washing-machine/fb1209r5m-ambreml/gallery/450x450/01_VB-F_9-5kg_MiddleBlack_F2Y2VRPYJ_FB1209R5M_ML_Front.jpg" alt="Washer Dryers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Washer Dryers</h3>
-                        <p>Complete laundry solution</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> All-in-one solution</li>
-                            <li><i class="fas fa-check"></i> Energy efficient</li>
-                            <li><i class="fas fa-check"></i> Steam technology</li>
-                        </ul>
-                        <button class="card-button" data-product="washer-dryer">
                             <i class="fab fa-whatsapp"></i> Subscribe
                         </button>
                     </div>
@@ -1559,174 +1120,110 @@
     </nav>
 
     <script>
-        // PRODUCT URL MAPPING - FROM YOUR ORIGINAL HTML
-        const productUrls = {
-            'water-purifiers': 'https://products.lgsubscribes.com.my/water-purifier',
-            'air-purifiers': 'https://products.lgsubscribes.com.my/air-purifier',
-            'air-conditioners': 'https://products.lgsubscribes.com.my/air-conditioner',
-            'vacuum-cleaners': 'https://products.lgsubscribes.com.my/vacuum-cleaner',
-            'washer-dryers': 'https://products.lgsubscribes.com.my/washer-dryer',
-            'refrigerators': 'https://products.lgsubscribes.com.my/refrigerator',
-            'tv': 'https://products.lgsubscribes.com.my/tvs',
-            'soundbar': 'https://products.lgsubscribes.com.my/soundbar',
-            'dehumidifiers': 'https://products.lgsubscribes.com.my/dehumidifier',
-            'dishwashers': 'https://products.lgsubscribes.com.my/dishwasher',
-            'stylers': 'https://products.lgsubscribes.com.my/styler'
-        };
+        // Smart Scroll Navigation
+        let lastScrollTop = 0;
+        const categoryNav = document.getElementById('categoryNav');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const backToTop = document.getElementById('backToTop');
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
-            const closeMenu = document.getElementById('closeMenu');
-
-            mobileMenuToggle.addEventListener('click', function() {
-                navLinks.classList.add('active');
-            });
-
-            closeMenu.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target) && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-
-            // Back to Top
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // FAQ Accordion
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const item = this.parentElement;
-                    item.classList.toggle('active');
-                });
-            });
-
-            // Quick Category Navigation
-            const categoryCards = document.querySelectorAll('.category-card');
-            categoryCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    categoryCards.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId !== '#') {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            const offsetTop = targetElement.offsetTop - 100;
-                            window.scrollTo({
-                                top: offsetTop,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // Search Functionality with Results Display
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
-            const allCards = document.querySelectorAll('.product-card, .featured-card');
-            const searchResults = document.getElementById('search-results');
-            const noResults = document.getElementById('no-results');
-            const resultsCount = document.getElementById('results-count');
-            const searchTerm = document.getElementById('search-term');
-
-            function performSearch() {
-                const searchValue = searchInput.value.toLowerCase().trim();
-                
-                let visibleCount = 0;
-                
-                allCards.forEach(card => {
-                    const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
-                    const cardDescription = card.querySelector('p').textContent.toLowerCase();
-                    
-                    const matchesSearch = searchValue === '' || 
-                        cardTitle.includes(searchValue) || 
-                        cardDescription.includes(searchValue);
-                    
-                    if (matchesSearch) {
-                        card.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Show search results info
-                if (searchValue !== '') {
-                    searchResults.style.display = 'block';
-                    resultsCount.textContent = visibleCount;
-                    searchTerm.textContent = searchValue;
-                    
-                    if (visibleCount === 0) {
-                        noResults.style.display = 'block';
-                    } else {
-                        noResults.style.display = 'none';
-                    }
-                } else {
-                    searchResults.style.display = 'none';
-                    noResults.style.display = 'none';
-                }
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Scroll progress indicator
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            scrollIndicator.style.transform = `scaleX(${scrollPercent})`;
+            
+            // Hide/show category navigation based on scroll direction
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down - hide navigation
+                categoryNav.classList.add('hidden');
+            } else {
+                // Scrolling up - show navigation
+                categoryNav.classList.remove('hidden');
             }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            
+            // Show/hide back to top button
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
 
-            searchInput.addEventListener('input', performSearch);
-            searchButton.addEventListener('click', performSearch);
+        // Back to top functionality
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Show category nav when going to top
+            categoryNav.classList.remove('hidden');
+        });
 
-            // Clear search when clicking category chips
-            categoryCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    searchInput.value = '';
-                    performSearch();
-                });
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const closeMenu = document.getElementById('closeMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
             });
+        });
 
-            // Product Card Clicks - Navigate to product pages
-            const productCards = document.querySelectorAll('.product-card, .featured-card');
-            productCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    // Don't navigate if clicking subscribe button
-                    if (e.target.classList.contains('card-button') || 
-                        e.target.closest('.card-button')) {
-                        return;
+        // Category Navigation
+        const categoryPills = document.querySelectorAll('.category-pill');
+        categoryPills.forEach(pill => {
+            pill.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                categoryPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 100;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
                     }
-                    
-                    const productCategory = this.dataset.category;
-                    const productUrl = productUrls[productCategory];
-                    
-                    if (productUrl) {
-                        window.open(productUrl, '_blank');
-                    }
-                });
+                }
             });
+        });
 
-            // Subscribe Buttons - Open WhatsApp
-            const subscribeButtons = document.querySelectorAll('.card-button');
-            subscribeButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const product = this.dataset.product || 'LG appliance';
-                    const message = `Hi, I want to subscribe to ${product}. What's the next step?`;
-                    window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
-                });
+        // Product interactions
+        const productCards = document.querySelectorAll('.product-card, .featured-card');
+        const cardButtons = document.querySelectorAll('.card-button');
+
+        cardButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const product = this.dataset.product || 'LG appliance';
+                const message = `Hi, I want to subscribe to ${product}. What's the next step?`;
+                window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
             });
         });
     </script>
