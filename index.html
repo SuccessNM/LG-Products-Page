@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Header - Mobile First */
         header {
             background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
             color: white;
@@ -116,7 +116,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - Mobile First */
         .hero {
             position: relative;
             background: linear-gradient(135deg, rgba(228, 0, 43, 0.95) 0%, rgba(165, 0, 36, 0.95) 100%), url('https://img.sanishtech.com/u/cf4369e7f0c173cc296a9fc8ac08381a.jpg') no-repeat center center;
@@ -166,7 +166,7 @@
             opacity: 0.95;
         }
 
-        /* Benefits Grid */
+        /* Benefits Grid - Mobile First */
         .benefits-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -196,7 +196,7 @@
             min-width: 25px;
         }
 
-        /* CTA Buttons */
+        /* CTA Buttons - Mobile First */
         .hero-cta-buttons {
             display: flex;
             flex-direction: column;
@@ -253,94 +253,171 @@
             50% { box-shadow: 0 8px 25px rgba(228, 0, 43, 0.6); }
         }
 
-        /* Arrow container for popular plans button */
-        .arrow-container {
+        /* Enhanced Button Container */
+        .enhanced-button-container {
             position: relative;
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
-        /* Arrow styles */
-        .arrow {
+        /* Elegant Pulse Effect */
+        .pulse-ring {
             position: absolute;
-            color: #e4002b;
-            font-size: 1.5rem;
-            animation: blink 1.5s infinite;
-        }
-
-        /* Position arrows around the button */
-        .arrow-top {
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .arrow-bottom {
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%) rotate(180deg);
-        }
-
-        .arrow-left {
-            left: -40px;
             top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
+            left: 50%;
+            width: 120%;
+            height: 150%;
+            border: 2px solid #e4002b;
+            border-radius: 60px;
+            transform: translate(-50%, -50%);
+            animation: pulse-ring 2s infinite;
+            pointer-events: none;
         }
 
-        .arrow-right {
-            right: -40px;
-            top: 50%;
-            transform: translateY(-50%) rotate(90deg);
+        .pulse-ring:nth-child(2) {
+            animation-delay: 0.5s;
         }
 
-        /* Blinking animation */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .pulse-ring:nth-child(3) {
+            animation-delay: 1s;
         }
 
-        /* Quick Category Navigation */
+        @keyframes pulse-ring {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Premium Badge */
+        .premium-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #b8860b;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        /* Sparkle Effects */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 3s infinite;
+        }
+
+        .sparkle-1 { top: 10%; left: 15%; animation-delay: 0.5s; }
+        .sparkle-2 { top: 25%; right: 20%; animation-delay: 1.2s; }
+        .sparkle-3 { bottom: 15%; left: 25%; animation-delay: 0.8s; }
+        .sparkle-4 { bottom: 30%; right: 15%; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Optimized Category Navigation - Mobile First */
         .quick-category-nav {
             background: white;
-            padding: 1.5rem 0;
+            padding: 1.5rem 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 60px;
             z-index: 999;
         }
 
-        .category-scroll {
+        .category-header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .category-header h3 {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .scroll-hint {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .scroll-hint i {
+            font-size: 0.7rem;
+            animation: bounce 2s infinite;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            padding: 0 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
         }
 
-        .category-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-chip {
-            padding: 12px 20px;
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px;
             background: #f8f9fa;
             border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            white-space: nowrap;
-            font-weight: 600;
-            color: #333;
+            border-radius: 15px;
             text-decoration: none;
-            transition: all 0.3s;
-            flex-shrink: 0;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
-        .category-chip.active {
+        .category-card.active {
             background: #e4002b;
-            color: white;
             border-color: #e4002b;
+            color: white;
         }
 
-        /* Search Section */
+        .category-card:active {
+            transform: scale(0.95);
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-3px);
+            }
+            60% {
+                transform: translateY(-2px);
+            }
+        }
+
+        /* Search Section - Mobile First */
         .search-section {
             background: white;
             padding: 2rem 20px;
@@ -407,7 +484,7 @@
             display: none;
         }
 
-        /* Featured Products */
+        /* Featured Products - Mobile First */
         .featured-section {
             padding: 3rem 20px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -550,7 +627,7 @@
             transform: translateY(2px);
         }
 
-        /* Products Section */
+        /* Products Section - Mobile First */
         .products-section {
             padding: 3rem 20px;
             background: white;
@@ -597,7 +674,7 @@
             height: 180px;
         }
 
-        /* Trust Section */
+        /* Trust Section - Mobile First */
         .trust-section {
             padding: 3rem 20px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -627,7 +704,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* FAQ Section */
+        /* FAQ Section - Mobile First */
         .faq-section {
             padding: 3rem 20px;
             background: #f8f9fa;
@@ -664,7 +741,7 @@
             display: block;
         }
 
-        /* Footer CTA */
+        /* Footer CTA - Mobile First */
         .footer-cta {
             background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
             color: white;
@@ -698,7 +775,7 @@
             color: #999;
         }
 
-        /* Floating Elements */
+        /* Floating Elements - Mobile First */
         .floating-whatsapp {
             position: fixed;
             bottom: 90px;
@@ -766,7 +843,7 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Desktop */
+        /* Desktop Optimizations */
         @media (min-width: 768px) {
             .mobile-menu-toggle, .close-menu, .mobile-bottom-nav {
                 display: none;
@@ -784,6 +861,11 @@
             .nav-links a {
                 padding: 0.5rem 0;
                 border-bottom: none;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: #ffd700;
             }
 
             .hero h1 {
@@ -809,6 +891,60 @@
             .trust-stats {
                 grid-template-columns: repeat(4, 1fr);
             }
+
+            /* Desktop version - keep horizontal scroll for larger screens */
+            .categories-grid {
+                display: flex;
+                gap: 10px;
+                overflow-x: auto;
+                padding-bottom: 5px;
+                scrollbar-width: none;
+            }
+            
+            .categories-grid::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .category-card {
+                flex: 0 0 auto;
+                min-width: 120px;
+                padding: 15px 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .category-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .category-header {
+                display: none;
+            }
+
+            /* Enhanced desktop card interactions */
+            .featured-card, .product-card {
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .featured-card:hover, .product-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+
+            .featured-card:hover .card-image img,
+            .product-card:hover .card-image img {
+                transform: scale(1.05);
+            }
+
+            /* Desktop button enhancements */
+            .cta-button {
+                transition: all 0.3s ease;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
         }
 
         @media (min-width: 1024px) {
@@ -818,6 +954,44 @@
 
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-content {
+                padding: 0 40px;
+            }
+
+            .section-header {
+                padding: 0 40px;
+            }
+        }
+
+        /* Large Desktop Optimizations */
+        @media (min-width: 1200px) {
+            .hero {
+                padding: 120px 20px 80px;
+            }
+
+            .featured-section, .products-section, .trust-section, .faq-section {
+                padding: 4rem 20px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .featured-card:active, .product-card:active {
+                transform: translateY(-5px);
+            }
+            
+            .category-card:active {
+                transform: scale(0.95);
+            }
+            
+            .cta-button:active {
+                transform: translateY(2px);
             }
         }
     </style>
@@ -885,14 +1059,37 @@
         </div>
     </section>
 
-    <!-- Quick Category Navigation -->
+    <!-- Optimized Quick Category Navigation -->
     <section class="quick-category-nav">
-        <div class="category-scroll">
-            <a href="#featured" class="category-chip active">🔥 Most Popular</a>
-            <a href="#home-essentials" class="category-chip">🏠 Home Essentials</a>
-            <a href="#entertainment" class="category-chip">📺 Entertainment</a>
-            <a href="#kitchen" class="category-chip">👨‍🍳 Kitchen</a>
-            <a href="#cleaning" class="category-chip">✨ Cleaning</a>
+        <div class="category-header">
+            <h3>Browse Categories</h3>
+            <div class="scroll-hint">
+                <i class="fas fa-chevron-down"></i>
+                <span>Tap to explore</span>
+            </div>
+        </div>
+        
+        <div class="categories-grid">
+            <a href="#featured" class="category-card active">
+                <div class="category-icon">🔥</div>
+                <span class="category-name">Most Popular</span>
+            </a>
+            <a href="#home-essentials" class="category-card">
+                <div class="category-icon">🏠</div>
+                <span class="category-name">Home Essentials</span>
+            </a>
+            <a href="#entertainment" class="category-card">
+                <div class="category-icon">📺</div>
+                <span class="category-name">Entertainment</span>
+            </a>
+            <a href="#kitchen" class="category-card">
+                <div class="category-icon">👨‍🍳</div>
+                <span class="category-name">Kitchen</span>
+            </a>
+            <a href="#cleaning" class="category-card">
+                <div class="category-icon">✨</div>
+                <span class="category-name">Cleaning</span>
+            </a>
         </div>
     </section>
 
@@ -924,14 +1121,20 @@
             <h2 class="section-title">Money-Saving Favorites</h2>
             <p class="section-subtitle">These appliances save our customers the most money every month</p>
             
-            <!-- Enhanced Button with Blinking Arrows -->
-            <div class="arrow-container">
-                <div class="arrow arrow-top">⬇️</div>
-                <div class="arrow arrow-bottom">⬇️</div>
-                <div class="arrow arrow-left">⬇️</div>
-                <div class="arrow arrow-right">⬇️</div>
+            <!-- Enhanced Button with Premium Effects -->
+            <div class="enhanced-button-container">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
                 
-                <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button red-theme" target="_blank" style="display: inline-flex; width: auto; padding: 12px 24px;">
+                <div class="premium-badge">POPULAR</div>
+                
+                <div class="sparkle sparkle-1"></div>
+                <div class="sparkle sparkle-2"></div>
+                <div class="sparkle sparkle-3"></div>
+                <div class="sparkle sparkle-4"></div>
+                
+                <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button red-theme" target="_blank" style="display: inline-flex; width: auto; padding: 16px 32px;">
                     <i class="fas fa-chart-bar"></i> View All Popular Plans
                 </a>
             </div>
@@ -1415,13 +1618,13 @@
             });
 
             // Quick Category Navigation
-            const categoryChips = document.querySelectorAll('.category-chip');
-            categoryChips.forEach(chip => {
-                chip.addEventListener('click', function(e) {
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    categoryChips.forEach(c => c.classList.remove('active'));
+                    categoryCards.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
                     
                     const targetId = this.getAttribute('href');
@@ -1489,8 +1692,8 @@
             searchButton.addEventListener('click', performSearch);
 
             // Clear search when clicking category chips
-            categoryChips.forEach(chip => {
-                chip.addEventListener('click', function() {
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
                     searchInput.value = '';
                     performSearch();
                 });
