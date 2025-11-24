@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Categories - LG Subscribes</title>
+    <title>LG Premium Appliances - Subscribe & Save RM3,000+ | LG Subscribes</title>
+    <meta name="description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades. Join 5,000+ happy Malaysian families.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -11,23 +12,29 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
             background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
             color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1001;
         }
 
         .header-container {
@@ -36,250 +43,138 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            position: relative;
+            padding: 12px 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            text-decoration: none;
         }
 
         .logo-image {
-            height: 40px;
+            height: 35px;
             width: auto;
+            border-radius: 6px;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
+            color: white;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
         }
 
         .nav-links {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
+            flex-direction: column;
+            padding: 80px 20px 20px;
+            gap: 0;
+            z-index: 1000;
+        }
+
+        .nav-links.active {
             display: flex;
-            gap: 2rem;
-            align-items: center;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-            padding: 0.5rem 0;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Enhanced Dropdown Styles */
-        .dropdown {
-            position: relative;
+            padding: 18px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
+            font-size: 1.1rem;
         }
 
-        .dropdown > a {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        .dropdown-content {
-            display: none;
+        .close-menu {
             position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 320px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            z-index: 1000;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-            padding: 0;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .dropdown-category {
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.3s;
-        }
-
-        .dropdown-category:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-category:hover {
-            background: #f9f9f9;
-        }
-
-        .dropdown-header {
-            padding: 15px 20px;
-            color: #000000;
-            text-decoration: none;
-            cursor: pointer;
-            font-weight: 600;
-            display: block;
-            border: none;
+            top: 20px;
+            right: 20px;
             background: none;
-            width: 100%;
-            text-align: left;
-            font-size: 15px;
-            transition: background 0.3s;
-        }
-
-        .dropdown-header:hover {
-            background: #e4002b;
+            border: none;
             color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        .dropdown-info {
-            display: none;
-            padding: 20px;
-            background: #f9f9f9;
-            border-top: 1px solid #eaeaea;
-        }
-
-        .dropdown-info.active {
-            display: block;
-        }
-
-        .product-info {
-            color: #666;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .product-info h4 {
-            color: #e4002b;
-            margin-bottom: 12px;
-            font-size: 16px;
-        }
-
-        .features {
-            list-style-type: none;
-            margin: 12px 0;
-        }
-
-        .features li {
-            padding: 6px 0;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .features li:before {
-            content: "✓";
-            color: #00cc66;
-            font-weight: bold;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .view-products {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 16px;
-            background: #e4002b;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: background 0.3s;
-        }
-
-        .view-products:hover {
-            background: #a50024;
-        }
-
-        /* Enhanced Hero Section with Diagonal Overlay */
+        /* Hero Section */
         .hero {
             position: relative;
-            background: url('https://img.sanishtech.com/u/cf4369e7f0c173cc296a9fc8ac08381a.jpg') no-repeat center center;
+            background: linear-gradient(135deg, rgba(228, 0, 43, 0.95) 0%, rgba(165, 0, 36, 0.95) 100%), url('https://img.sanishtech.com/u/cf4369e7f0c173cc296a9fc8ac08381a.jpg') no-repeat center center;
             background-size: cover;
             color: white;
             text-align: center;
-            padding: 5rem 2rem;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(45deg, rgba(228, 0, 43, 0.8) 0%, transparent 70%),
-                linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
-            z-index: 1;
+            padding: 100px 20px 60px;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
         }
 
         .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .hero-price {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            font-weight: 700;
+            font-weight: 800;
+            color: #ffd700;
+            margin: 1rem 0;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #e4002b;
+        .hero-price span {
+            font-size: 1.2rem;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 2;
         }
 
-        .cta-button:hover {
-            background: #a50024;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
-        /* Benefits Grid Styles */
+        /* Benefits Grid */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 15px;
-            margin-top: 2rem;
-            max-width: 600px;
+            margin: 2.5rem 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .benefit-item {
@@ -287,92 +182,304 @@
             align-items: flex-start;
             gap: 12px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.4;
             text-align: left;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
         }
 
         .benefit-item i {
             color: #ffd700;
-            font-size: 1.2rem;
-            min-width: 20px;
-            margin-top: 2px;
+            font-size: 1.3rem;
+            min-width: 25px;
         }
 
-        .benefit-item strong {
-            color: #ffd700;
-            display: block;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-
-        /* Categories Section */
-        .categories {
-            max-width: 1200px;
+        /* CTA Buttons */
+        .hero-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
             margin: 0 auto;
-            padding: 4rem 20px;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 18px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
+        .cta-button:active {
+            transform: translateY(2px);
+        }
+
+        .cta-button.secondary {
+            background: white;
             color: #e4002b;
-            margin-bottom: 0.5rem;
+        }
+
+        .cta-button.red-theme {
+            background: #e4002b;
+            color: white;
+            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4);
+            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+            animation: buttonGlow 3s infinite;
+        }
+
+        .cta-button.red-theme:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(228, 0, 43, 0.5);
+        }
+
+        .cta-button.red-theme:active {
+            transform: translateY(-1px);
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4); }
+            50% { box-shadow: 0 8px 25px rgba(228, 0, 43, 0.6); }
+        }
+
+        /* Arrow container for popular plans button */
+        .arrow-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Arrow styles */
+        .arrow {
+            position: absolute;
+            color: #e4002b;
+            font-size: 1.5rem;
+            animation: blink 1.5s infinite;
+        }
+
+        /* Position arrows around the button */
+        .arrow-top {
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .arrow-bottom {
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        .arrow-left {
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .arrow-right {
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        /* Blinking animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Quick Category Navigation */
+        .quick-category-nav {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 999;
+        }
+
+        .category-scroll {
+            display: flex;
+            gap: 10px;
+            padding: 0 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-chip {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            white-space: nowrap;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .category-chip.active {
+            background: #e4002b;
+            color: white;
+            border-color: #e4002b;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 2rem 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 60px 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: #e4002b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+        }
+
+        /* Search Results Styling */
+        .search-results {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem auto;
+            max-width: 500px;
+            text-align: center;
+            border: 2px solid #e4002b;
+            display: none;
+        }
+
+        .results-info {
+            font-weight: 600;
+            color: #e4002b;
+        }
+
+        .results-info span {
+            font-weight: 800;
+        }
+
+        .no-results {
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 400px;
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            display: none;
+        }
+
+        /* Featured Products */
+        .featured-section {
+            padding: 3rem 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-badge {
+            background: #e4002b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             display: inline-block;
         }
 
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #e4002b;
-            border-radius: 2px;
+        .section-title {
+            font-size: 2rem;
+            color: #e4002b;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
-        .section-title p {
+        .section-subtitle {
             color: #666;
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .categories-grid {
+        .featured-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .category-card {
+        .featured-card, .product-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .featured-card:active, .product-card:active {
+            transform: translateY(-5px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff4444;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
         }
 
         .card-image {
             height: 200px;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -387,74 +494,194 @@
             transition: transform 0.5s;
         }
 
-        .category-card:hover .card-image img {
-            transform: scale(1.1);
+        .featured-card:active .card-image img,
+        .product-card:active .card-image img {
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 1.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 1.5rem;
         }
 
-        .card-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
+        .card-title {
+            font-size: 1.3rem;
             color: #e4002b;
-        }
-
-        .card-content p {
-            color: #666;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            flex-grow: 1;
-            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .card-features {
             list-style: none;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .card-features li {
-            padding: 0.4rem 0;
+            padding: 6px 0;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
         .card-features i {
-            color: #e4002b;
-            font-size: 0.9rem;
+            color: #25D366;
         }
 
+        /* CHANGED: WhatsApp buttons to GREEN */
         .card-button {
-            display: inline-block;
-            background: #e4002b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25D366;
             color: white;
-            padding: 0.9rem 1.5rem;
-            border-radius: 6px;
+            padding: 14px 20px;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-align: center;
+            font-weight: 700;
             width: 100%;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            transition: all 0.3s;
         }
 
-        .card-button:hover {
-            background: #a50024;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        .card-button:active {
+            background: #1da851;
+            transform: translateY(2px);
         }
 
-        /* Improved Footer Styles */
+        /* Products Section */
+        .products-section {
+            padding: 3rem 20px;
+            background: white;
+        }
+
+        .category-group {
+            margin-bottom: 3rem;
+        }
+
+        .group-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e4002b;
+        }
+
+        .group-icon {
+            width: 40px;
+            height: 40px;
+            background: #e4002b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .group-title {
+            font-size: 1.5rem;
+            color: #e4002b;
+            font-weight: 700;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .product-card .card-image {
+            height: 180px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 3rem 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .trust-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #e4002b;
+            display: block;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 20px;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 700;
+            color: #e4002b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #e4002b 0%, #a50024 100%);
+            color: white;
+            padding: 3rem 20px;
+            text-align: center;
+        }
+
+        .footer-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 2rem auto 0;
+        }
+
         footer {
             background-color: #1a1a1a;
-            margin-top: 3rem;
             color: #f0f0f0;
         }
 
@@ -464,264 +691,133 @@
             padding: 40px 20px 20px;
         }
 
-        .footer-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #333;
-        }
-
-        .footer-header h1 {
-            color: #e4002b;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .footer-header p {
-            color: #ccc;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .contact-section, .support-section {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .footer-section-title {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e4002b;
-            display: inline-block;
-        }
-
-        .contact-info {
-            list-style: none;
-        }
-
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            font-size: 1.05rem;
-        }
-
-        .contact-info li i {
-            margin-right: 15px;
-            color: #e4002b;
-            width: 20px;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .support-info {
-            background-color: #252525;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e4002b;
-        }
-
-        .support-info h3 {
-            color: #e4002b;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .support-info p {
-            margin-bottom: 12px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ddd;
-        }
-
-        .hours {
-            font-size: 0.95rem;
-            color: #bbb;
-            margin-top: 15px;
-        }
-
-        .hours p {
-            margin-bottom: 5px;
-        }
-
         .copyright {
             text-align: center;
             padding-top: 25px;
             border-top: 1px solid #333;
             color: #999;
-            font-size: 0.95rem;
         }
 
-        /* New Features */
-        .search-container {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 20px;
-        }
-
-        .search-box {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 50px 12px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #e4002b;
-            box-shadow: 0 0 0 3px rgba(228, 0, 43, 0.1);
-        }
-
-        .search-box button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background: #e4002b;
+        /* Floating Elements */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #25D366;
             color: white;
-            border: none;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .search-box button:hover {
-            background: #a50024;
-        }
-
-        .filter-container {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 20px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            text-decoration: none;
+            z-index: 1000;
+            animation: pulse 2s infinite;
         }
 
-        .filter-btn {
-            padding: 8px 16px;
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #666;
+            flex: 1;
+            font-size: 0.8rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
             background: #e4002b;
             color: white;
-            border-color: #e4002b;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+            opacity: 0;
         }
 
-        .category-count {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #666;
+        .back-to-top.visible {
+            opacity: 1;
         }
 
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-            display: none;
-        }
-
-        .no-results i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #e0e0e0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
+        /* Desktop */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle, .close-menu, .mobile-bottom-nav {
+                display: none;
             }
 
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: flex;
+                position: static;
+                flex-direction: row;
+                background: none;
+                padding: 0;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+                border-bottom: none;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
+                font-size: 3rem;
             }
 
             .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .benefit-item {
-                font-size: 0.9rem;
+            .hero-cta-buttons, .footer-cta-buttons {
+                flex-direction: row;
             }
 
-            .categories-grid {
-                grid-template-columns: 1fr;
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .logo {
-                justify-content: center;
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                display: none;
-                width: 100%;
+            .trust-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .featured-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-
-            .contact-section, .support-section {
-                min-width: 100%;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -730,522 +826,543 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
+            <a href="https://successnm.github.io/DEN-LG-Homepage/" class="logo">
                 <img src="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg" alt="LG Subscribes" class="logo-image">
                 <div class="logo-text">LG Subscribes</div>
-            </div>
-            <nav class="nav-links">
-                <a href="#" data-link="home">Home</a>
-                <div class="dropdown">
-                    <a href="#" class="active">Products</a>
-                    <div class="dropdown-content">
-                        <!-- Water Purifiers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="water-purifiers">Water Purifiers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Enjoy clean, safe drinking water with LG water purification technology</h4>
-                                    <ul class="features">
-                                        <li>Multi-stage filtration system</li>
-                                        <li>Hot & cold water options</li>
-                                        <li>UV sterilization technology</li>
-                                        <li>Energy efficient operation</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/water-purifier" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Air Purifiers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="air-purifiers">Air Purifiers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Breathe cleaner air with LG's advanced air purification systems</h4>
-                                    <ul class="features">
-                                        <li>HEPA filtration system</li>
-                                        <li>Real-time air quality monitoring</li>
-                                        <li>Auto mode operation</li>
-                                        <li>Low noise levels</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/air-purifier" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Air Conditioners -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="air-conditioners">Air Conditioners</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Stay cool with LG's energy-efficient inverter air conditioners</h4>
-                                    <ul class="features">
-                                        <li>Energy saving inverter technology</li>
-                                        <li>Smart Wi-Fi connectivity</li>
-                                        <li>Quiet operation</li>
-                                        <li>Easy maintenance</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/air-conditioner" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Vacuum Cleaners -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="vacuum-cleaners">Vacuum Cleaners</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Keep your home spotless with LG's powerful vacuum cleaners</h4>
-                                    <ul class="features">
-                                        <li>Cordless convenience</li>
-                                        <li>Powerful suction technology</li>
-                                        <li>Long battery life</li>
-                                        <li>Multiple attachments included</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/vacuum-cleaner" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Washer Dryers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="washer-dryers">Washer Dryers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Complete laundry solution with LG's advanced washer dryers</h4>
-                                    <ul class="features">
-                                        <li>All-in-one solution</li>
-                                        <li>Energy efficient operation</li>
-                                        <li>Multiple wash programs</li>
-                                        <li>Steam technology</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/washer-dryer" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Refrigerators -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="refrigerators">Refrigerators</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Keep your food fresh with LG's innovative refrigerator technology</h4>
-                                    <ul class="features">
-                                        <li>Smart cooling system</li>
-                                        <li>Door-in-door design</li>
-                                        <li>Energy saving technology</li>
-                                        <li>Spacious storage</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/refrigerator" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- TV -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="tv">TV</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Experience stunning visuals with LG's premium television range</h4>
-                                    <ul class="features">
-                                        <li>4K UHD resolution</li>
-                                        <li>Smart TV capabilities</li>
-                                        <li>ThinQ AI technology</li>
-                                        <li>Immersive sound</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/tvs" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sound Bars -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="soundbar">Sound Bars</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Enhance your audio experience with LG's premium sound bars</h4>
-                                    <ul class="features">
-                                        <li>Dolby Atmos support</li>
-                                        <li>Wireless connectivity</li>
-                                        <li>Multiple sound modes</li>
-                                        <li>Slim design</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/soundbar" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dehumidifiers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="dehumidifiers">Dehumidifiers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Control humidity levels with LG's efficient dehumidifiers</h4>
-                                    <ul class="features">
-                                        <li>High moisture removal</li>
-                                        <li>Auto defrost function</li>
-                                        <li>Quiet operation</li>
-                                        <li>Energy efficient</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/dehumidifier" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dishwashers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="dishwashers">Dishwashers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Make dishwashing effortless with LG's smart dishwashers</h4>
-                                    <ul class="features">
-                                        <li>Multiple wash cycles</li>
-                                        <li>Quiet operation</li>
-                                        <li>Energy and water saving</li>
-                                        <li>SmartThinQ compatible</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/dishwasher" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Stylers -->
-                        <div class="dropdown-category">
-                            <button class="dropdown-header" data-category="stylers">Stylers</button>
-                            <div class="dropdown-info">
-                                <div class="product-info">
-                                    <h4>Keep your clothes fresh and wrinkle-free with LG Styler</h4>
-                                    <ul class="features">
-                                        <li>Steam refresh technology</li>
-                                        <li>Gentle on fabrics</li>
-                                        <li>Deodorizing function</li>
-                                        <li>Space efficient design</li>
-                                    </ul>
-                                    <a href="https://products.lgsubscribes.com.my/styler" class="view-products" target="_blank">View Products</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" data-link="promotions">Promotions</a>
-                <a href="#" data-link="become-agent">Become an Agent</a>
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="https://successnm.github.io/DEN-LG-Homepage/">Home</a>
+                <a href="#" class="active">Products</a>
+                <a href="https://products.lgsubscribes.com.my/promotions" target="_blank">Promotions</a>
+                <a href="https://successnm.github.io/LGSubscribe/" target="_blank">Become Agent</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Diagonal Overlay -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Smart Malaysians Don't Buy Appliances - They Subscribe & Save</h1>
-            <p>Stop draining your savings on expensive purchases. Start from RM80/month and watch your money grow instead.</p>
-            <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button" target="_blank">Most Subscription Plans</a>
+            <div class="hero-badge">✅ 5,000+ Happy Malaysian Families</div>
+            <h1>Stop Buying Appliances.<br>Start <span style="color: #ffd700;">Subscribe & Save</span>.</h1>
+            <div class="hero-price">From RM80<span>/month</span></div>
+            <p class="hero-subtitle">Zero Down Payment • Free Maintenance • Free Upgrades</p>
             
-            <!-- BENEFITS GRID -->
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <i class="fas fa-piggy-bank"></i>
-                    <span>Keep RM 3,000+ in your savings <strong>instead of spending on appliances</strong></span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Watch your money grow <strong>while enjoying premium products</strong></span>
+                    <span>Keep <strong>RM 3,000+ in savings</strong> instead of spending upfront</span>
                 </div>
                 <div class="benefit-item">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Zero repair costs <strong>protect your savings from surprises</strong></span>
+                    <span><strong>Zero repair costs</strong> - we cover all maintenance</span>
                 </div>
                 <div class="benefit-item">
                     <i class="fas fa-sync-alt"></i>
-                    <span>Free upgrades <strong>mean you never waste money on outdated tech</strong></span>
+                    <span><strong>Free upgrades</strong> when new models launch</span>
                 </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Your money <strong>grows while you use</strong> premium products</span>
+                </div>
+            </div>
+
+            <div class="hero-cta-buttons">
+                <a href="https://wa.me/60189554615?text=Hi%2C%20I%20want%20to%20subscribe%20to%20LG%20appliances%20from%20RM80%2Fmonth" class="cta-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp to Subscribe
+                </a>
+                <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button secondary" target="_blank">
+                    <i class="fas fa-chart-bar"></i> View Most Popular Plans
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Search and Filter Section -->
-    <div class="search-container">
+    <!-- Quick Category Navigation -->
+    <section class="quick-category-nav">
+        <div class="category-scroll">
+            <a href="#featured" class="category-chip active">🔥 Most Popular</a>
+            <a href="#home-essentials" class="category-chip">🏠 Home Essentials</a>
+            <a href="#entertainment" class="category-chip">📺 Entertainment</a>
+            <a href="#kitchen" class="category-chip">👨‍🍳 Kitchen</a>
+            <a href="#cleaning" class="category-chip">✨ Cleaning</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search for products...">
+            <input type="text" id="search-input" placeholder="🔍 Search for products...">
             <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
-    </div>
-
-    <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">All Products</button>
-        <button class="filter-btn" data-filter="home-appliances">Home Appliances</button>
-        <button class="filter-btn" data-filter="entertainment">Entertainment</button>
-        <button class="filter-btn" data-filter="kitchen">Kitchen</button>
-        <button class="filter-btn" data-filter="cleaning">Cleaning</button>
-    </div>
-
-    <div class="category-count">
-        Showing <span id="product-count">11</span> product categories
-    </div>
-
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="section-title">
-            <h2>Our Product Categories</h2>
-            <p>Choose from our wide range of LG products available on subscription</p>
-        </div>
-
-        <div class="categories-grid" id="categories-grid">
-            <!-- Water Purifiers -->
-            <div class="category-card" data-category="water-purifiers" data-tags="home-appliances kitchen">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers">
-                </div>
-                <div class="card-content">
-                    <h3>Water Purifiers</h3>
-                    <p>Enjoy clean, safe drinking water with LG water purification technology</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Multi-stage filtration</li>
-                        <li><i class="fas fa-check"></i> Hot & cold water options</li>
-                        <li><i class="fas fa-check"></i> UV sterilization</li>
-                        <li><i class="fas fa-check"></i> Energy efficient</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Air Purifiers -->
-            <div class="category-card" data-category="air-purifiers" data-tags="home-appliances">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifiers">
-                </div>
-                <div class="card-content">
-                    <h3>Air Purifiers</h3>
-                    <p>Breathe cleaner air with LG's advanced air purification systems</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> HEPA filtration system</li>
-                        <li><i class="fas fa-check"></i> Real-time air quality monitoring</li>
-                        <li><i class="fas fa-check"></i> Auto mode operation</li>
-                        <li><i class="fas fa-check"></i> Low noise levels</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Air Conditioners -->
-            <div class="category-card" data-category="air-conditioners" data-tags="home-appliances">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioners">
-                </div>
-                <div class="card-content">
-                    <h3>Air Conditioners</h3>
-                    <p>Stay cool with LG's energy-efficient inverter air conditioners</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Energy saving inverter technology</li>
-                        <li><i class="fas fa-check"></i> Smart Wi-Fi connectivity</li>
-                        <li><i class="fas fa-check"></i> Quiet operation</li>
-                        <li><i class="fas fa-check"></i> Easy maintenance</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Vacuum Cleaners -->
-            <div class="category-card" data-category="vacuum-cleaners" data-tags="cleaning home-appliances">
-                <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/vacuum-cleaner/a9x-rsteam-dcbrlml/gallery/2010x1334/handstick-a9x-2025-s9bwndtbdw-a9x-rsteam-my-calmingbeige-01-front-vaccum.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="Vacuum Cleaners">
-                </div>
-                <div class="card-content">
-                    <h3>Vacuum Cleaners</h3>
-                    <p>Keep your home spotless with LG's powerful vacuum cleaners</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Cordless convenience</li>
-                        <li><i class="fas fa-check"></i> Powerful suction</li>
-                        <li><i class="fas fa-check"></i> Long battery life</li>
-                        <li><i class="fas fa-check"></i> Multiple attachments</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Washer Dryers -->
-            <div class="category-card" data-category="washer-dryers" data-tags="home-appliances cleaning">
-                <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/washing-machine/fb1209r5m-ambreml/gallery/450x450/01_VB-F_9-5kg_MiddleBlack_F2Y2VRPYJ_FB1209R5M_ML_Front.jpg/jcr:content/renditions/thum-350x350.jpeg" alt="Washer Dryers">
-                </div>
-                <div class="card-content">
-                    <h3>Washer Dryers</h3>
-                    <p>Complete laundry solution with LG's advanced washer dryers</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> All-in-one solution</li>
-                        <li><i class="fas fa-check"></i> Energy efficient</li>
-                        <li><i class="fas fa-check"></i> Multiple wash programs</li>
-                        <li><i class="fas fa-check"></i> Steam technology</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Refrigerators -->
-            <div class="category-card" data-category="refrigerators" data-tags="kitchen home-appliances">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerators">
-                </div>
-                <div class="card-content">
-                    <h3>Refrigerators</h3>
-                    <p>Keep your food fresh with LG's innovative refrigerator technology</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Smart cooling system</li>
-                        <li><i class="fas fa-check"></i> Door-in-door design</li>
-                        <li><i class="fas fa-check"></i> Energy saving</li>
-                        <li><i class="fas fa-check"></i> Spacious storage</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- TV -->
-            <div class="category-card" data-category="tv" data-tags="entertainment">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV">
-                </div>
-                <div class="card-content">
-                    <h3>TV</h3>
-                    <p>Experience stunning visuals with LG's premium television range</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> 4K UHD resolution</li>
-                        <li><i class="fas fa-check"></i> Smart TV capabilities</li>
-                        <li><i class="fas fa-check"></i> ThinQ AI technology</li>
-                        <li><i class="fas fa-check"></i> Immersive sound</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Sound Bars -->
-            <div class="category-card" data-category="soundbar" data-tags="entertainment">
-                <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars">
-                </div>
-                <div class="card-content">
-                    <h3>Sound Bars</h3>
-                    <p>Enhance your audio experience with LG's premium sound bars</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Dolby Atmos support</li>
-                        <li><i class="fas fa-check"></i> Wireless connectivity</li>
-                        <li><i class="fas fa-check"></i> Multiple sound modes</li>
-                        <li><i class="fas fa-check"></i> Slim design</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Dehumidifiers -->
-            <div class="category-card" data-category="dehumidifiers" data-tags="home-appliances">
-                <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/air-purifier/dry-shoes-case/gallery/gallery/dehumidifier-mojave-2025-accessory-drying-case-gallery-gallery-2010-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="Dehumidifiers">
-                </div>
-                <div class="card-content">
-                    <h3>Dehumidifiers</h3>
-                    <p>Control humidity levels with LG's efficient dehumidifiers</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> High moisture removal</li>
-                        <li><i class="fas fa-check"></i> Auto defrost function</li>
-                        <li><i class="fas fa-check"></i> Quiet operation</li>
-                        <li><i class="fas fa-check"></i> Energy efficient</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Dishwashers -->
-            <div class="category-card" data-category="dishwashers" data-tags="kitchen home-appliances">
-                <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/dishwasher/dfc533fv-apyreml/gallery/gallery/free-standing-xd5-2024-dfc533fv-gallery-gallery-2010-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="Dishwashers">
-                </div>
-                <div class="card-content">
-                    <h3>Dishwashers</h3>
-                    <p>Make dishwashing effortless with LG's smart dishwashers</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Multiple wash cycles</li>
-                        <li><i class="fas fa-check"></i> Quiet operation</li>
-                        <li><i class="fas fa-check"></i> Energy and water saving</li>
-                        <li><i class="fas fa-check"></i> SmartThinQ compatible</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
-            </div>
-
-            <!-- Stylers -->
-            <div class="category-card" data-category="stylers" data-tags="home-appliances cleaning">
-                <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/images/lg-styler/s3wf_alwqeml_eaml_my_c/gallery/Z1.jpg?w=800" alt="Stylers">
-                </div>
-                <div class="card-content">
-                    <h3>Stylers</h3>
-                    <p>Keep your clothes fresh and wrinkle-free with LG Styler</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check"></i> Steam refresh technology</li>
-                        <li><i class="fas fa-check"></i> Gentle on fabrics</li>
-                        <li><i class="fas fa-check"></i> Deodorizing function</li>
-                        <li><i class="fas fa-check"></i> Space efficient design</li>
-                    </ul>
-                    <button class="card-button">View Products</button>
-                </div>
+        
+        <!-- Search Results Display -->
+        <div class="search-results" id="search-results">
+            <div class="results-info">
+                <span id="results-count">0</span> products found for "<span id="search-term"></span>"
             </div>
         </div>
 
         <div class="no-results" id="no-results">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: #e0e0e0;"></i>
             <h3>No products found</h3>
-            <p>Try adjusting your search or filter criteria</p>
+            <p>Try adjusting your search terms</p>
         </div>
     </section>
 
-    <!-- Improved Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-header">
-                <h1>LG Subscribes</h1>
-                <p>Providing premium LG products through flexible subscription plans for Malaysian homes.</p>
-            </div>
+    <!-- Featured Products -->
+    <section class="featured-section" id="featured">
+        <div class="section-header">
+            <div class="section-badge">🔥 MOST POPULAR</div>
+            <h2 class="section-title">Money-Saving Favorites</h2>
+            <p class="section-subtitle">These appliances save our customers the most money every month</p>
             
-            <div class="footer-content">
-                <div class="contact-section">
-                    <h2 class="footer-section-title">Contact Information</h2>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> 1-800-88-5432</li>
-                        <li><i class="fas fa-envelope"></i> support@lgsubscribes.com.my</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</li>
-                    </ul>
-                </div>
+            <!-- Enhanced Button with Blinking Arrows -->
+            <div class="arrow-container">
+                <div class="arrow arrow-top">⬇️</div>
+                <div class="arrow arrow-bottom">⬇️</div>
+                <div class="arrow arrow-left">⬇️</div>
+                <div class="arrow arrow-right">⬇️</div>
                 
-                <div class="support-section">
-                    <h2 class="footer-section-title">Product Service & Support</h2>
-                    <p style="margin-bottom: 15px; color: #ddd;">Get your questions answered about product setup, use and care, repair and maintenance issues. We can help.</p>
-                    
-                    <div class="support-info">
-                        <h3>LG PuriCare Product</h3>
-                        <p>1800-18-7874 (National call rate)</p>
-                        <p>Or 03-8682 7777</p>
-                        <div class="hours">
-                            <p><strong>Operating Hours:</strong></p>
-                            <p>Monday to Friday: 9am to 6pm</p>
-                            <p>Saturday: 9am to 1pm</p>
-                            <p>Sunday/Public Holidays: Closed</p>
-                        </div>
+                <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button red-theme" target="_blank" style="display: inline-flex; width: auto; padding: 12px 24px;">
+                    <i class="fas fa-chart-bar"></i> View All Popular Plans
+                </a>
+            </div>
+        </div>
+
+        <div class="featured-grid">
+            <!-- Air Conditioner -->
+            <div class="featured-card" data-category="air-conditioners">
+                <div class="popular-badge">MOST SAVED</div>
+                <div class="card-image">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioner" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Air Conditioner</h3>
+                    <p>Stay cool with energy-efficient inverter technology</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Energy saving inverter</li>
+                        <li><i class="fas fa-check"></i> Smart Wi-Fi control</li>
+                        <li><i class="fas fa-check"></i> Ultra quiet operation</li>
+                    </ul>
+                    <button class="card-button" data-product="air-conditioner">
+                        <i class="fab fa-whatsapp"></i> Subscribe Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Refrigerator -->
+            <div class="featured-card" data-category="refrigerators">
+                <div class="popular-badge">BEST VALUE</div>
+                <div class="card-image">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Refrigerator</h3>
+                    <p>Keep food fresh with smart cooling technology</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Smart cooling system</li>
+                        <li><i class="fas fa-check"></i> Door-in-door design</li>
+                        <li><i class="fas fa-check"></i> Energy efficient</li>
+                    </ul>
+                    <button class="card-button" data-product="refrigerator">
+                        <i class="fab fa-whatsapp"></i> Subscribe Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- TV -->
+            <div class="featured-card" data-category="tv">
+                <div class="popular-badge">TRENDING</div>
+                <div class="card-image">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Smart TV</h3>
+                    <p>Immersive entertainment with stunning visuals</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> 4K OLED display</li>
+                        <li><i class="fas fa-check"></i> ThinQ AI technology</li>
+                        <li><i class="fas fa-check"></i> Dolby Atmos sound</li>
+                    </ul>
+                    <button class="card-button" data-product="tv">
+                        <i class="fab fa-whatsapp"></i> Subscribe Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Products -->
+    <section class="products-section" id="all-products">
+        <div class="section-header">
+            <h2 class="section-title">Complete Product Range</h2>
+            <p class="section-subtitle">Choose from our full range of premium LG appliances</p>
+        </div>
+
+        <!-- Home Essentials -->
+        <div class="category-group" id="home-essentials">
+            <div class="group-header">
+                <div class="group-icon">🏠</div>
+                <h3 class="group-title">Home Essentials</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Air Conditioners -->
+                <div class="product-card" data-category="air-conditioners">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioners" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Air Conditioners</h3>
+                        <p>Stay cool with energy-efficient inverter ACs</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Inverter technology</li>
+                            <li><i class="fas fa-check"></i> Wi-Fi smart control</li>
+                            <li><i class="fas fa-check"></i> Quiet operation</li>
+                        </ul>
+                        <button class="card-button" data-product="air-conditioner">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Air Purifiers -->
+                <div class="product-card" data-category="air-purifiers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifiers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Air Purifiers</h3>
+                        <p>Breathe cleaner air with advanced filtration</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> HEPA filtration</li>
+                            <li><i class="fas fa-check"></i> Air quality monitor</li>
+                            <li><i class="fas fa-check"></i> Auto mode</li>
+                        </ul>
+                        <button class="card-button" data-product="air-purifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dehumidifiers -->
+                <div class="product-card" data-category="dehumidifiers">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/air-purifier/dry-shoes-case/gallery/gallery/dehumidifier-mojave-2025-accessory-drying-case-gallery-gallery-2010-01.jpg" alt="Dehumidifiers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dehumidifiers</h3>
+                        <p>Control humidity for healthier living</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> High moisture removal</li>
+                            <li><i class="fas fa-check"></i> Auto defrost</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                        </ul>
+                        <button class="card-button" data-product="dehumidifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Water Purifiers -->
+                <div class="product-card" data-category="water-purifiers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Water Purifiers</h3>
+                        <p>Enjoy clean, safe drinking water</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Multi-stage filtration</li>
+                            <li><i class="fas fa-check"></i> Hot & cold water</li>
+                            <li><i class="fas fa-check"></i> UV sterilization</li>
+                        </ul>
+                        <button class="card-button" data-product="water-purifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stylers -->
+                <div class="product-card" data-category="stylers">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/images/lg-styler/s3wf_alwqeml_eaml_my_c/gallery/Z1.jpg" alt="Stylers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Stylers</h3>
+                        <p>Keep clothes fresh and wrinkle-free</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Steam refresh</li>
+                            <li><i class="fas fa-check"></i> Gentle on fabrics</li>
+                            <li><i class="fas fa-check"></i> Deodorizing function</li>
+                        </ul>
+                        <button class="card-button" data-product="styler">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
                     </div>
                 </div>
             </div>
-            
+        </div>
+
+        <!-- Entertainment -->
+        <div class="category-group" id="entertainment">
+            <div class="group-header">
+                <div class="group-icon">📺</div>
+                <h3 class="group-title">Entertainment</h3>
+            </div>
+            <div class="products-grid">
+                <!-- TV -->
+                <div class="product-card" data-category="tv">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Smart TVs</h3>
+                        <p>Immersive entertainment experience</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> 4K OLED display</li>
+                            <li><i class="fas fa-check"></i> ThinQ AI technology</li>
+                            <li><i class="fas fa-check"></i> Dolby Atmos sound</li>
+                        </ul>
+                        <button class="card-button" data-product="tv">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sound Bars -->
+                <div class="product-card" data-category="soundbar">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sound Bars</h3>
+                        <p>Cinema-quality audio at home</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Dolby Atmos support</li>
+                            <li><i class="fas fa-check"></i> Wireless connectivity</li>
+                            <li><i class="fas fa-check"></i> Multiple sound modes</li>
+                        </ul>
+                        <button class="card-button" data-product="soundbar">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kitchen -->
+        <div class="category-group" id="kitchen">
+            <div class="group-header">
+                <div class="group-icon">👨‍🍳</div>
+                <h3 class="group-title">Kitchen</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Refrigerators -->
+                <div class="product-card" data-category="refrigerators">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerators" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Refrigerators</h3>
+                        <p>Keep food fresh with smart cooling</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Smart cooling system</li>
+                            <li><i class="fas fa-check"></i> Door-in-door design</li>
+                            <li><i class="fas fa-check"></i> Energy saving</li>
+                        </ul>
+                        <button class="card-button" data-product="refrigerator">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dishwashers -->
+                <div class="product-card" data-category="dishwashers">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/dishwasher/dfc533fv-apyreml/gallery/gallery/free-standing-xd5-2024-dfc533fv-gallery-gallery-2010-01.jpg" alt="Dishwashers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dishwashers</h3>
+                        <p>Effortless cleaning for your kitchen</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Multiple wash cycles</li>
+                            <li><i class="fas fa-check"></i> Quiet operation</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                        </ul>
+                        <button class="card-button" data-product="dishwasher">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cleaning -->
+        <div class="category-group" id="cleaning">
+            <div class="group-header">
+                <div class="group-icon">✨</div>
+                <h3 class="group-title">Cleaning</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Vacuum Cleaners -->
+                <div class="product-card" data-category="vacuum-cleaners">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/vacuum-cleaner/a9x-rsteam-dcbrlml/gallery/2010x1334/handstick-a9x-2025-s9bwndtbdw-a9x-rsteam-my-calmingbeige-01-front-vaccum.jpg" alt="Vacuum Cleaners" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Vacuum Cleaners</h3>
+                        <p>Powerful cleaning for spotless homes</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Cordless convenience</li>
+                            <li><i class="fas fa-check"></i> Powerful suction</li>
+                            <li><i class="fas fa-check"></i> Long battery life</li>
+                        </ul>
+                        <button class="card-button" data-product="vacuum-cleaner">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Washer Dryers -->
+                <div class="product-card" data-category="washer-dryers">
+                    <div class="card-image">
+                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/washing-machine/fb1209r5m-ambreml/gallery/450x450/01_VB-F_9-5kg_MiddleBlack_F2Y2VRPYJ_FB1209R5M_ML_Front.jpg" alt="Washer Dryers" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Washer Dryers</h3>
+                        <p>Complete laundry solution</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> All-in-one solution</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                            <li><i class="fas fa-check"></i> Steam technology</li>
+                        </ul>
+                        <button class="card-button" data-product="washer-dryer">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white;">Trusted by Malaysian Families</h2>
+        </div>
+        <div class="trust-stats">
+            <div class="trust-stat">
+                <span class="trust-number">5,000+</span>
+                <span>Happy Families</span>
+            </div>
+            <div class="trust-stat">
+                <span class="trust-number">RM15M+</span>
+                <span>Saved by Customers</span>
+            </div>
+            <div class="trust-stat">
+                <span class="trust-number">98%</span>
+                <span>Satisfaction Rate</span>
+            </div>
+            <div class="trust-stat">
+                <span class="trust-number">24/7</span>
+                <span>Customer Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    How much can I save with subscription?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Most customers save RM2,000 to RM5,000 upfront while enjoying premium appliances.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What happens if the appliance breaks down?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We cover ALL repair and maintenance costs! Your subscription includes complete protection.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Ready to Start Saving?</h2>
+        <p>Join 5,000+ smart Malaysians who keep their money growing</p>
+        <div class="footer-cta-buttons">
+            <a href="https://wa.me/60189554615?text=Hi%2C%20I%20want%20to%20subscribe%20to%20LG%20appliances%20from%20RM80%2Fmonth" class="cta-button" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp Now
+            </a>
+            <a href="https://successnm.github.io/LGMostSubsPlan/" class="cta-button secondary" target="_blank">
+                <i class="fas fa-chart-bar"></i> View Popular Plans
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
             <div class="copyright">
                 <p>© 2024 LG Subscribes Sdn Bhd. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Floating Elements -->
+    <a href="https://wa.me/60189554615?text=Hi%2C%20I%20want%20to%20subscribe%20to%20LG%20appliances%20from%20RM80%2Fmonth" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <nav class="mobile-bottom-nav">
+        <a href="https://successnm.github.io/DEN-LG-Homepage/" class="bottom-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#featured" class="bottom-nav-item">
+            <i class="fas fa-bolt"></i>
+            <span>Popular</span>
+        </a>
+        <a href="#all-products" class="bottom-nav-item">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+        </a>
+        <a href="https://wa.me/60189554615?text=Hi%2C%20I%20want%20to%20subscribe%20to%20LG%20appliances%20from%20RM80%2Fmonth" class="bottom-nav-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
     <script>
-        // Category URLs mapping
-        const categoryUrls = {
+        // PRODUCT URL MAPPING - FROM YOUR ORIGINAL HTML
+        const productUrls = {
             'water-purifiers': 'https://products.lgsubscribes.com.my/water-purifier',
             'air-purifiers': 'https://products.lgsubscribes.com.my/air-purifier',
             'air-conditioners': 'https://products.lgsubscribes.com.my/air-conditioner',
             'vacuum-cleaners': 'https://products.lgsubscribes.com.my/vacuum-cleaner',
-            'washer-dryers': 'https://products.lgsubscribes.com.my/washer-dyer',
+            'washer-dryers': 'https://products.lgsubscribes.com.my/washer-dryer',
             'refrigerators': 'https://products.lgsubscribes.com.my/refrigerator',
             'tv': 'https://products.lgsubscribes.com.my/tvs',
             'soundbar': 'https://products.lgsubscribes.com.my/soundbar',
@@ -1254,157 +1371,158 @@
             'stylers': 'https://products.lgsubscribes.com.my/styler'
         };
 
-        // Header navigation URLs - UPDATED HOME LINK
-        const headerLinks = {
-            'home': 'https://successnm.github.io/DEN-LG-Homepage/',
-            'promotions': 'https://products.lgsubscribes.com.my/promotions',
-            'become-agent': 'https://successnm.github.io/LGSubscribe/'
-        };
-
-        // Enhanced dropdown functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Header navigation click handlers
-            const navLinks = document.querySelectorAll('.nav-links a[data-link]');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const linkType = this.getAttribute('data-link');
-                    
-                    if (headerLinks[linkType]) {
-                        window.open(headerLinks[linkType], '_blank');
-                    }
-                });
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const closeMenu = document.getElementById('closeMenu');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.add('active');
             });
 
-            // Dropdown header click handlers
-            const dropdownHeaders = document.querySelectorAll('.dropdown-header');
-            
-            dropdownHeaders.forEach(header => {
-                header.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const dropdownInfo = this.nextElementSibling;
-                    
-                    // Close all other dropdown infos
-                    document.querySelectorAll('.dropdown-info').forEach(info => {
-                        if (info !== dropdownInfo) {
-                            info.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current dropdown info
-                    dropdownInfo.classList.toggle('active');
-                });
+            closeMenu.addEventListener('click', function() {
+                navLinks.classList.remove('active');
             });
 
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function() {
-                document.querySelectorAll('.dropdown-info').forEach(info => {
-                    info.classList.remove('active');
-                });
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
             });
 
-            // Add click event to category cards
-            const cards = document.querySelectorAll('.category-card');
-            cards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('card-button')) {
-                        const category = this.dataset.category;
-                        if (category && categoryUrls[category]) {
-                            window.open(categoryUrls[category], '_blank');
-                        }
-                    }
-                });
+            // Back to Top
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
             });
 
-            // Add functionality to "View Products" buttons
-            const buttons = document.querySelectorAll('.card-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const card = this.closest('.category-card');
-                    const category = card.dataset.category;
-                    if (category && categoryUrls[category]) {
-                        window.open(categoryUrls[category], '_blank');
-                    }
-                });
-            });
-
-            // Add functionality to dropdown "View Products" links
-            const dropdownLinks = document.querySelectorAll('.dropdown-info .view-products');
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    // Links already have target="_blank" so they'll open in new tab
-                });
-            });
-
-            // Add functionality to CTA button
-            const ctaButton = document.querySelector('.cta-button');
-            ctaButton.addEventListener('click', function(e) {
+            backToTop.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.open('https://successnm.github.io/LGMostSubsPlan/', '_blank');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Search and Filter functionality
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Quick Category Navigation
+            const categoryChips = document.querySelectorAll('.category-chip');
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    categoryChips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 100;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Search Functionality with Results Display
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const categoryCards = document.querySelectorAll('.category-card');
-            const productCount = document.getElementById('product-count');
+            const allCards = document.querySelectorAll('.product-card, .featured-card');
+            const searchResults = document.getElementById('search-results');
             const noResults = document.getElementById('no-results');
+            const resultsCount = document.getElementById('results-count');
+            const searchTerm = document.getElementById('search-term');
 
-            // Search functionality
             function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                const searchValue = searchInput.value.toLowerCase().trim();
                 
                 let visibleCount = 0;
                 
-                categoryCards.forEach(card => {
-                    const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                allCards.forEach(card => {
+                    const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
                     const cardDescription = card.querySelector('p').textContent.toLowerCase();
-                    const cardTags = card.dataset.tags;
                     
-                    const matchesSearch = searchTerm === '' || 
-                        cardTitle.includes(searchTerm) || 
-                        cardDescription.includes(searchTerm);
+                    const matchesSearch = searchValue === '' || 
+                        cardTitle.includes(searchValue) || 
+                        cardDescription.includes(searchValue);
                     
-                    const matchesFilter = activeFilter === 'all' || 
-                        (cardTags && cardTags.includes(activeFilter));
-                    
-                    if (matchesSearch && matchesFilter) {
-                        card.style.display = 'flex';
+                    if (matchesSearch) {
+                        card.style.display = 'block';
                         visibleCount++;
                     } else {
                         card.style.display = 'none';
                     }
                 });
                 
-                // Update product count
-                productCount.textContent = visibleCount;
-                
-                // Show/hide no results message
-                if (visibleCount === 0) {
-                    noResults.style.display = 'block';
+                // Show search results info
+                if (searchValue !== '') {
+                    searchResults.style.display = 'block';
+                    resultsCount.textContent = visibleCount;
+                    searchTerm.textContent = searchValue;
+                    
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
                 } else {
+                    searchResults.style.display = 'none';
                     noResults.style.display = 'none';
                 }
             }
 
-            // Search event listeners
             searchInput.addEventListener('input', performSearch);
             searchButton.addEventListener('click', performSearch);
-            
-            // Filter event listeners
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    // Perform search with new filter
+
+            // Clear search when clicking category chips
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    searchInput.value = '';
                     performSearch();
+                });
+            });
+
+            // Product Card Clicks - Navigate to product pages
+            const productCards = document.querySelectorAll('.product-card, .featured-card');
+            productCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't navigate if clicking subscribe button
+                    if (e.target.classList.contains('card-button') || 
+                        e.target.closest('.card-button')) {
+                        return;
+                    }
+                    
+                    const productCategory = this.dataset.category;
+                    const productUrl = productUrls[productCategory];
+                    
+                    if (productUrl) {
+                        window.open(productUrl, '_blank');
+                    }
+                });
+            });
+
+            // Subscribe Buttons - Open WhatsApp
+            const subscribeButtons = document.querySelectorAll('.card-button');
+            subscribeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const product = this.dataset.product || 'LG appliance';
+                    const message = `Hi, I want to subscribe to ${product}. What's the next step?`;
+                    window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
                 });
             });
         });
