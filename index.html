@@ -240,6 +240,7 @@
             white-space: nowrap;
             flex-shrink: 0;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .category-pill.active {
@@ -786,6 +787,50 @@
             50% { transform: scale(1.05); }
         }
 
+        /* NEW: Missing Section Styles */
+        .missing-section {
+            padding: 3rem 20px;
+            background: white;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .missing-section i {
+            font-size: 3rem;
+            color: #e4002b;
+            margin-bottom: 1rem;
+        }
+        
+        .missing-section h3 {
+            color: #e4002b;
+            margin-bottom: 1rem;
+        }
+        
+        .missing-section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .missing-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .missing-cta:active {
+            transform: translateY(2px);
+        }
+
         /* Desktop Optimizations */
         @media (min-width: 768px) {
             .mobile-menu-toggle, .close-menu, .mobile-bottom-nav {
@@ -1160,6 +1205,118 @@
                             <li><i class="fas fa-check"></i> Multiple sound modes</li>
                         </ul>
                         <button class="card-button" data-product="soundbar">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Kitchen Section -->
+        <div class="category-group" id="kitchen">
+            <div class="group-header">
+                <div class="group-icon">👨‍🍳</div>
+                <h3 class="group-title">Kitchen</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Refrigerator -->
+                <div class="product-card" data-category="refrigerators">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Refrigerators</h3>
+                        <p>Smart cooling for fresher food</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Smart cooling system</li>
+                            <li><i class="fas fa-check"></i> Door-in-door design</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                        </ul>
+                        <button class="card-button" data-product="refrigerator">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Cleaning Section -->
+        <div class="category-group" id="cleaning">
+            <div class="group-header">
+                <div class="group-icon">✨</div>
+                <h3 class="group-title">Cleaning</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Vacuum Cleaner -->
+                <div class="product-card" data-category="vacuum-cleaners">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Vacuum Cleaner" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Vacuum Cleaners</h3>
+                        <p>Powerful cleaning for spotless homes</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Cordless convenience</li>
+                            <li><i class="fas fa-check"></i> Powerful suction</li>
+                            <li><i class="fas fa-check"></i> Multiple attachments</li>
+                        </ul>
+                        <button class="card-button" data-product="vacuum-cleaner">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Laundry Section -->
+        <div class="category-group" id="laundry">
+            <div class="group-header">
+                <div class="group-icon">👕</div>
+                <h3 class="group-title">Laundry</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Washer Dryer -->
+                <div class="product-card" data-category="washer-dryers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Washer Dryer" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Washer Dryers</h3>
+                        <p>All-in-one laundry solution</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Wash and dry in one</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                            <li><i class="fas fa-check"></i> Smart controls</li>
+                        </ul>
+                        <button class="card-button" data-product="washer-dryer">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Air Care Section -->
+        <div class="category-group" id="air-care">
+            <div class="group-header">
+                <div class="group-icon">💨</div>
+                <h3 class="group-title">Air Care</h3>
+            </div>
+            <div class="products-grid">
+                <!-- Air Purifier -->
+                <div class="product-card" data-category="air-purifiers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifier" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Air Purifiers</h3>
+                        <p>Breathe cleaner, healthier air</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> HEPA filtration</li>
+                            <li><i class="fas fa-check"></i> Air quality monitor</li>
+                            <li><i class="fas fa-check"></i> Auto mode</li>
+                        </ul>
+                        <button class="card-button" data-product="air-purifier">
                             <i class="fab fa-whatsapp"></i> Subscribe
                         </button>
                     </div>
