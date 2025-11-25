@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LG Premium Appliances - Subscribe & Save RM3,000+ | LG Subscribes</title>
     <meta name="description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades. Join 5,000+ happy Malaysian families.">
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="LG Premium Appliances - Subscribe & Save RM3,000+">
+    <meta property="og:description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades. Join 5,000+ happy Malaysian families.">
+    <meta property="og:image" content="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://successnm.github.io/DEN-LG-Homepage/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LG Subscribes">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LG Premium Appliances - Subscribe & Save RM3,000+">
+    <meta name="twitter:description" content="Get LG premium appliances with RM0 down payment. Pay from RM80/month. Free maintenance, free upgrades.">
+    <meta name="twitter:image" content="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg">
+    
+    <!-- Additional Meta Tags for Better Sharing -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://successnm.github.io/DEN-LG-Homepage/">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon for Better Branding -->
+    <link rel="icon" type="image/x-icon" href="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg">
+    
     <style>
         * {
             margin: 0;
@@ -624,64 +649,307 @@
             height: 180px;
         }
 
-        /* Trust Section */
+        /* ENHANCED: Trust Section */
         .trust-section {
-            padding: 3rem 20px;
+            padding: 4rem 20px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e4002b, #ff6b6b, #e4002b);
         }
 
         .trust-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 600px;
-            margin: 0 auto 3rem;
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+        }
+
+        .trust-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .trust-stat:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .trust-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #e4002b;
             display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(228, 0, 43, 0.3);
         }
 
-        /* FAQ Section */
+        .trust-stat span {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e4002b, #ff6b6b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .badge-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f0f0f0;
+        }
+
+        .testimonials {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            gap: 2rem;
+            padding: 1rem 0;
+            margin: 0 -20px;
+            padding: 1rem 20px;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e4002b, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .author-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: #e4002b;
+            border-color: #e4002b;
+        }
+
+        /* ENHANCED: FAQ Section */
         .faq-section {
-            padding: 3rem 20px;
+            padding: 4rem 20px;
             background: #f8f9fa;
         }
 
-        .faq-container {
-            max-width: 800px;
+        .faq-categories {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .faq-item {
+        .faq-category {
             background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e4002b, #ff6b6b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #e4002b;
+            font-weight: 700;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
             border-radius: 10px;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: #f0f0f0;
         }
 
         .faq-question {
             padding: 1.5rem;
             font-weight: 700;
-            color: #e4002b;
+            color: #333;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #e4002b;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #e4002b;
         }
 
         .faq-answer {
             padding: 0 1.5rem 1.5rem;
             color: #666;
             display: none;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
             display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer CTA */
@@ -716,6 +984,7 @@
             padding-top: 25px;
             border-top: 1px solid #333;
             color: #999;
+            font-size: 0.9rem;
         }
 
         /* Floating Elements */
@@ -734,6 +1003,7 @@
             text-decoration: none;
             z-index: 1000;
             animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .mobile-bottom-nav {
@@ -758,6 +1028,11 @@
             color: #666;
             flex: 1;
             font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .bottom-nav-item.active {
+            color: #e4002b;
         }
 
         .back-to-top {
@@ -775,11 +1050,16 @@
             text-decoration: none;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(228, 0, 43, 0.3);
         }
 
         .back-to-top.visible {
             opacity: 1;
+        }
+
+        .back-to-top:active {
+            transform: translateY(2px);
         }
 
         @keyframes pulse {
@@ -787,48 +1067,39 @@
             50% { transform: scale(1.05); }
         }
 
-        /* NEW: Missing Section Styles */
-        .missing-section {
-            padding: 3rem 20px;
-            background: white;
+        /* Image Optimization Styles */
+        .card-image {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .card-image img {
+            transition: all 0.3s ease;
+        }
+
+        .card-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Loading States */
+        .card-image img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-image img.loaded {
+            opacity: 1;
+        }
+
+        /* Error Handling */
+        .card-image .image-error {
+            display: none;
             text-align: center;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 600px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .missing-section i {
-            font-size: 3rem;
-            color: #e4002b;
-            margin-bottom: 1rem;
-        }
-        
-        .missing-section h3 {
-            color: #e4002b;
-            margin-bottom: 1rem;
-        }
-        
-        .missing-section p {
             color: #666;
-            margin-bottom: 1.5rem;
+            padding: 2rem;
         }
-        
-        .missing-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-        
-        .missing-cta:active {
-            transform: translateY(2px);
+
+        .card-image img.error + .image-error {
+            display: block;
         }
 
         /* Desktop Optimizations */
@@ -849,6 +1120,11 @@
             .nav-links a {
                 padding: 0.5rem 0;
                 border-bottom: none;
+                transition: color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                color: #ffd700;
             }
 
             .hero h1 {
@@ -875,11 +1151,42 @@
                 grid-template-columns: repeat(4, 1fr);
             }
 
-            /* ENHANCED: Desktop hover effects for categories */
+            .faq-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-slider {
+                overflow: hidden;
+                justify-content: center;
+            }
+
+            .testimonial-card {
+                flex: 0 0 350px;
+            }
+
+            /* ENHANCED: Desktop hover effects */
             .category-pill:hover:not(.active) {
                 background: #e9ecef;
                 border-color: #dee2e6;
                 transform: translateY(-2px);
+            }
+
+            .featured-card:hover, .product-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card-button:hover {
+                background: #1da851;
+                transform: translateY(-1px);
+            }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            }
+
+            .cta-button.secondary:hover {
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
             }
         }
 
@@ -891,6 +1198,10 @@
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .faq-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -899,7 +1210,7 @@
     <header>
         <div class="header-container">
             <a href="https://successnm.github.io/DEN-LG-Homepage/" class="logo">
-                <img src="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg" alt="LG Subscribes" class="logo-image">
+                <img src="https://lgsubscribes.com.my/main/wp-content/uploads/2024/11/web-mainpage-featured.jpg" alt="LG Subscribes" class="logo-image" width="35" height="35" loading="lazy">
                 <div class="logo-text">LG Subscribes</div>
             </a>
             
@@ -1015,7 +1326,11 @@
             <div class="featured-card" data-category="air-conditioners">
                 <div class="popular-badge">MOST SAVED</div>
                 <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioner" loading="lazy">
+                    <img src="https://www.lg.com/content/dam/channel/wcms/my/images/home-air-conditioners/s3-q12jarpa/gallery/2010/RAC-ARTCOOL-Gallery-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="Air Conditioner" width="300" height="200" loading="lazy">
+                    <div class="image-error">
+                        <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                        <p>Image not available</p>
+                    </div>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">Air Conditioner</h3>
@@ -1035,7 +1350,11 @@
             <div class="featured-card" data-category="refrigerators">
                 <div class="popular-badge">BEST VALUE</div>
                 <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" loading="lazy">
+                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/gallery-photo/ref/gc-x257cqes/450x450/GC-X257CQES-450x450-1.jpg/jcr:content/renditions/thum-350x350.jpeg" alt="Refrigerator" width="300" height="200" loading="lazy">
+                    <div class="image-error">
+                        <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                        <p>Image not available</p>
+                    </div>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">Refrigerator</h3>
@@ -1055,7 +1374,11 @@
             <div class="featured-card" data-category="tv">
                 <div class="popular-badge">TRENDING</div>
                 <div class="card-image">
-                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" loading="lazy">
+                    <img src="https://www.lg.com/content/dam/channel/wcms/sg/products/tvs/nanocell/nano80asa/nanocell-nano80-2025-75-gallery-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="TV" width="300" height="200" loading="lazy">
+                    <div class="image-error">
+                        <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                        <p>Image not available</p>
+                    </div>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">Smart TV</h3>
@@ -1090,7 +1413,11 @@
                 <!-- Air Conditioners -->
                 <div class="product-card" data-category="air-conditioners">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioners" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioners" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Air Conditioners</h3>
@@ -1109,7 +1436,11 @@
                 <!-- Air Purifiers -->
                 <div class="product-card" data-category="air-purifiers">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifiers" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifiers" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Air Purifiers</h3>
@@ -1125,29 +1456,14 @@
                     </div>
                 </div>
 
-                <!-- Dehumidifiers -->
-                <div class="product-card" data-category="dehumidifiers">
-                    <div class="card-image">
-                        <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/air-purifier/dry-shoes-case/gallery/gallery/dehumidifier-mojave-2025-accessory-drying-case-gallery-gallery-2010-01.jpg" alt="Dehumidifiers" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Dehumidifiers</h3>
-                        <p>Control humidity for healthier living</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> High moisture removal</li>
-                            <li><i class="fas fa-check"></i> Auto defrost</li>
-                            <li><i class="fas fa-check"></i> Energy efficient</li>
-                        </ul>
-                        <button class="card-button" data-product="dehumidifier">
-                            <i class="fab fa-whatsapp"></i> Subscribe
-                        </button>
-                    </div>
-                </div>
-
                 <!-- Water Purifiers -->
                 <div class="product-card" data-category="water-purifiers">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bef38f647fb2025c5a090d.jpeg" alt="Water Purifiers" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Water Purifiers</h3>
@@ -1175,7 +1491,11 @@
                 <!-- TV -->
                 <div class="product-card" data-category="tv">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Smart TVs</h3>
@@ -1194,7 +1514,11 @@
                 <!-- Sound Bars -->
                 <div class="product-card" data-category="soundbar">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Sound Bars" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Sound Bars</h3>
@@ -1212,7 +1536,7 @@
             </div>
         </div>
 
-        <!-- NEW: Kitchen Section -->
+        <!-- Kitchen Section -->
         <div class="category-group" id="kitchen">
             <div class="group-header">
                 <div class="group-icon">👨‍🍳</div>
@@ -1222,7 +1546,11 @@
                 <!-- Refrigerator -->
                 <div class="product-card" data-category="refrigerators">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Refrigerators</h3>
@@ -1240,7 +1568,7 @@
             </div>
         </div>
 
-        <!-- NEW: Cleaning Section -->
+        <!-- Cleaning Section -->
         <div class="category-group" id="cleaning">
             <div class="group-header">
                 <div class="group-icon">✨</div>
@@ -1250,7 +1578,11 @@
                 <!-- Vacuum Cleaner -->
                 <div class="product-card" data-category="vacuum-cleaners">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Vacuum Cleaner" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02a7dfbf3b629d0b674f7.jpeg" alt="Vacuum Cleaner" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Vacuum Cleaners</h3>
@@ -1268,7 +1600,7 @@
             </div>
         </div>
 
-        <!-- NEW: Laundry Section -->
+        <!-- Laundry Section -->
         <div class="category-group" id="laundry">
             <div class="group-header">
                 <div class="group-icon">👕</div>
@@ -1278,7 +1610,11 @@
                 <!-- Washer Dryer -->
                 <div class="product-card" data-category="washer-dryers">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0e564fc367017b01adb09.jpeg" alt="Washer Dryer" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c03b3bf6b49a0dbb6d8499.jpeg" alt="Washer Dryer" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Washer Dryers</h3>
@@ -1296,7 +1632,7 @@
             </div>
         </div>
 
-        <!-- NEW: Air Care Section -->
+        <!-- Air Care Section -->
         <div class="category-group" id="air-care">
             <div class="group-header">
                 <div class="group-icon">💨</div>
@@ -1306,7 +1642,11 @@
                 <!-- Air Purifier -->
                 <div class="product-card" data-category="air-purifiers">
                     <div class="card-image">
-                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifier" loading="lazy">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68bfd10f210e438650d0c5ee.jpeg" alt="Air Purifier" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Air Purifiers</h3>
@@ -1321,78 +1661,350 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Dehumidifier -->
+                <div class="product-card" data-category="dehumidifiers">
+                    <div class="card-image">
+                        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c022267cf8d62924791cd0.jpeg" alt="Dehumidifier" width="300" height="180" loading="lazy">
+                        <div class="image-error">
+                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
+                            <p>Image not available</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dehumidifiers</h3>
+                        <p>Control humidity for healthier living</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> High moisture removal</li>
+                            <li><i class="fas fa-check"></i> Auto defrost</li>
+                            <li><i class="fas fa-check"></i> Energy efficient</li>
+                        </ul>
+                        <button class="card-button" data-product="dehumidifier">
+                            <i class="fab fa-whatsapp"></i> Subscribe
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Section -->
+    <!-- ENHANCED: Trust Section -->
     <section class="trust-section">
         <div class="section-header">
-            <h2 class="section-title" style="color: white;">Trusted by Malaysian Families</h2>
+            <div class="section-badge">🏆 TRUSTED BY MALAYSIANS</div>
+            <h2 class="section-title" style="color: white;">Why Families Choose LG Subscribe</h2>
+            <p class="section-subtitle" style="color: #ccc;">Join thousands of smart Malaysians who save money while enjoying premium appliances</p>
         </div>
+
         <div class="trust-stats">
             <div class="trust-stat">
-                <span class="trust-number">5,000+</span>
+                <span class="trust-number" data-count="5000">0</span>
                 <span>Happy Families</span>
             </div>
             <div class="trust-stat">
-                <span class="trust-number">RM15M+</span>
-                <span>Saved by Customers</span>
+                <span class="trust-number" data-count="15">0</span>
+                <span>Million RM Saved</span>
             </div>
             <div class="trust-stat">
-                <span class="trust-number">98%</span>
+                <span class="trust-number" data-count="98">0</span>
                 <span>Satisfaction Rate</span>
             </div>
             <div class="trust-stat">
-                <span class="trust-number">24/7</span>
-                <span>Customer Support</span>
+                <span class="trust-number" data-count="24">0</span>
+                <span>/7 Support</span>
+            </div>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <div class="badge-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="badge-text">LG Certified</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="badge-text">Free Installation</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="badge-text">Free Maintenance</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="badge-text">Free Upgrades</div>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <h3 style="margin-bottom: 2rem; color: white;">What Our Customers Say</h3>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Switching to LG Subscribe saved me RM4,200 upfront! Now I have premium appliances without the huge cash outflow. The free maintenance is a lifesaver!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Ahmad Salleh</h4>
+                            <p>Subscriber since 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The upgrade program is amazing! I got the latest LG OLED TV without any extra cost. Much better than buying and being stuck with old technology."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PL</div>
+                        <div class="author-info">
+                            <h4>Priya Lim</h4>
+                            <p>3 LG Products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "24/7 support is fantastic. When my refrigerator had an issue, they sent a technician within hours. No repair costs - everything was covered!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MW</div>
+                        <div class="author-info">
+                            <h4>Michael Wong</h4>
+                            <p>Family of 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- ENHANCED: FAQ Section -->
     <section class="faq-section">
         <div class="section-header">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="section-badge">❓ FAQ</div>
+            <h2 class="section-title">Soalan Lazim</h2>
+            <p class="section-subtitle">Dapatkan jawapan tentang perkhidmatan LG Subscribe™</p>
         </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    How much can I save with subscription vs buying?
-                    <i class="fas fa-chevron-down"></i>
+        
+        <div class="faq-categories">
+            <!-- Program Basics -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">📝</div>
+                    <h3 class="category-title">Asas Program</h3>
                 </div>
-                <div class="faq-answer">
-                    Most customers save RM2,000 to RM5,000 upfront while enjoying premium appliances. Instead of paying RM3,000-8,000 upfront, you pay from RM80/month and keep your savings invested.
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Apa itu LG Subscribe™?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>LG Subscribe™</strong> ialah program langganan peralatan rumah LG di mana pelanggan bayar bulanan tanpa bayaran pendahuluan untuk menggunakan produk LG.</p>
+                            <p>Program ini membolehkan anda menikmati teknologi terkini LG tanpa perlu mengeluarkan modal besar di awal.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Produk apa yang tersedia?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Pelbagai produk premium LG</strong> tersedia untuk langganan:</p>
+                            <ul>
+                                <li><strong>Penjagaan Udara:</strong> Air purifier, Air conditioner, Dehumidifier</li>
+                                <li><strong>Peralatan Rumah:</strong> Peti sejuk, Mesin basuh, Dryer</li>
+                                <li><strong>Hiburan:</strong> TV, Soundbar, Home theater</li>
+                                <li><strong>Dapur:</strong> Dishwasher, Water purifier, Styler</li>
+                                <li><strong>Pembersihan:</strong> Vacuum cleaner</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    What happens if the appliance breaks down?
-                    <i class="fas fa-chevron-down"></i>
+
+            <!-- Payment & Contract -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">💰</div>
+                    <h3 class="category-title">Pembayaran & Kontrak</h3>
                 </div>
-                <div class="faq-answer">
-                    We cover ALL repair and maintenance costs! Your subscription includes complete protection - no extra charges for parts, labor, or service calls. We'll repair or replace within 48 hours.
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Ada kontrak berapa tahun?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Pilihan fleksibel</strong> mengikut keperluan anda:</p>
+                            <ul>
+                                <li><strong>Kontrak 3 tahun</strong> - Sesuai untuk produk teknologi pantas</li>
+                                <li><strong>Kontrak 5 tahun</strong> - Pilihan paling popular</li>
+                                <li><strong>Kontrak 7 tahun</strong> - Untuk penggunaan jangka panjang</li>
+                            </ul>
+                            <p>Tempoh kontrak bergantung kepada jenis produk dan pilihan pelanggan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Boleh tamat awal?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Ya, boleh tamat awal</strong> dengan syarat tertentu:</p>
+                            <ul>
+                                <li><strong>Termination fee</strong> mungkin dikenakan bergantung tempoh baki kontrak</li>
+                                <li><strong>Early settlement</strong> dibenarkan untuk sesetengah pakej</li>
+                                <li><strong>Pembayaran baki</strong> perlu diselesaikan sebelum penamatan</li>
+                            </ul>
+                            <p>Sila hubungi pasukan kami untuk maklumat lanjut tentang penamatan awal.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    Can I upgrade to newer models?
-                    <i class="fas fa-chevron-down"></i>
+
+            <!-- Service & Warranty -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">🔧</div>
+                    <h3 class="category-title">Servis & Waranti</h3>
                 </div>
-                <div class="faq-answer">
-                    Yes! We offer free upgrades when new models launch. You get to enjoy the latest technology without the hassle of selling your old appliance or paying upgrade fees.
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Apa servis yang termasuk?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Servis komprehensif</strong> termasuk dalam langganan:</p>
+                            <ul>
+                                <li><strong>Penyelenggaraan berkala</strong> - Servis rutin untuk prestasi optimum</li>
+                                <li><strong>Extended warranty</strong> - Perlindungan sepanjang tempoh langganan</li>
+                                <li><strong>Pembaikan percuma</strong> - Termasuk gantian alat ganti</li>
+                                <li><strong>Support 24/7</strong> - Bantuan teknikal bila-bila masa</li>
+                                <li><strong>Pemasangan profesional</strong> - Termasuk penghantaran dan setup</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Adakah produk baharu atau refurbished?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Semua produk LG Subscribe™ adalah unit baharu</strong> dan original dari kilang LG.</p>
+                            <ul>
+                                <li><strong>100% produk baru</strong> - Bukan refurbished atau used</li>
+                                <li><strong>Kualiti premium</strong> - Standard kualiti LG yang sama</li>
+                                <li><strong>Pembungkusan original</strong> - Lengkap dengan manual dan aksesori</li>
+                                <li><strong>Waranti rasmi</strong> - Dilindungi oleh LG Malaysia</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    Is there any long-term contract or commitment?
-                    <i class="fas fa-chevron-down"></i>
+
+            <!-- Delivery, Care & Expiry -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">🚚</div>
+                    <h3 class="category-title">Penghantaran, Penjagaan & Tamat Tempoh</h3>
                 </div>
-                <div class="faq-answer">
-                    No long-term lock-in! You can pause or cancel your subscription anytime with 30 days notice. We're confident you'll love the service that 98% of our customers continue their subscriptions.
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Apa jadi bila kontrak tamat?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Produk menjadi milik pelanggan</strong> sepenuhnya selepas kontrak tamat:</p>
+                            <ul>
+                                <li><strong>Tiada bayaran bulanan</strong> selepas kontrak habis</li>
+                                <li><strong>Pemilikan penuh</strong> - Produk adalah milik anda</li>
+                                <li><strong>Tiada yuran tambahan</strong> untuk pemilikan</li>
+                                <li><strong>Pilihan renewal</strong> - Buka langganan produk baru jika mahu</li>
+                            </ul>
+                            <p>Anda boleh terus menggunakan produk seperti biasa tanpa sebarang komitmen bulanan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Ada servis penjagaan seperti tukar filter?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Ya, servis penjagaan lengkap</strong> disediakan:</p>
+                            <ul>
+                                <li><strong>Expert care visit</strong> - Servis tahunan atau dua kali setahun oleh technician</li>
+                                <li><strong>Self-service option</strong> - Penghantaran filter terus ke rumah</li>
+                                <li><strong>Pembersihan berkala</strong> - Untuk produk tertentu seperti air conditioner</li>
+                                <li><strong>Pemeriksaan keselamatan</strong> - Memastikan produk selamat digunakan</li>
+                            </ul>
+                            <p>Semua servis penjagaan termasuk dalam bayaran langganan bulanan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration & Eligibility -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">📋</div>
+                    <h3 class="category-title">Pendaftaran & Kelayakan</h3>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Siapa yang layak untuk mendaftar LG Subscribe™?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Kelayakan mudah</strong> untuk individu dan perniagaan:</p>
+                            <ul>
+                                <li><strong>Individu:</strong> Pemegang kad kredit aktif dengan rekod pembayaran baik</li>
+                                <li><strong>Warganegara Malaysia:</strong> Berumur 21 tahun ke atas</li>
+                                <li><strong>Penduduk tetap:</strong> Tinggal di kawasan liputan servis</li>
+                                <li><strong>Perniagaan:</strong> Syarikat berdaftar dengan SSM (sesetengah negara)</li>
+                            </ul>
+                            <p>Proses kelulusan biasanya mengambil masa 1-2 hari bekerja.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Di mana boleh daftar?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Beberapa cara mudah untuk mendaftar:</strong></p>
+                            <ul>
+                                <li><strong>Melalui Agen Rasmi</strong> - Termasuk saya sebagai agent LG Subscribe™</li>
+                                <li><strong>Laman Rasmi</strong> - LG Subscribe Malaysia website</li>
+                                <li><strong>LG Brand Store</strong> - Kedai rasmi LG di seluruh Malaysia</li>
+                                <li><strong>WhatsApp Langsung</strong> - Hubungi +60 18-955 4615</li>
+                            </ul>
+                            <p>Sebagai agent, saya boleh bantu dengan proses pendaftaran dan pilihan produk terbaik untuk keperluan anda.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1465,7 +2077,7 @@
         };
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu functionality - CRITICAL
+            // Mobile menu functionality
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const navLinks = document.getElementById('navLinks');
             const closeMenu = document.getElementById('closeMenu');
@@ -1484,7 +2096,7 @@
                 }
             });
 
-            // Back to Top - CRITICAL
+            // Back to Top
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
@@ -1499,7 +2111,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // FAQ Accordion - CRITICAL
+            // FAQ Accordion
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', function() {
@@ -1508,7 +2120,7 @@
                 });
             });
 
-            // ENHANCED: Category Navigation with Smart Scroll
+            // Category Navigation with Smart Scroll
             let lastScrollTop = 0;
             const categoryNav = document.getElementById('categoryNav');
             
@@ -1516,7 +2128,6 @@
                 window.addEventListener('scroll', function() {
                     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                     
-                    // Hide/show category navigation based on scroll direction
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         categoryNav.classList.add('hidden');
                     } else {
@@ -1527,7 +2138,7 @@
                 });
             }
 
-            // ENHANCED: Swipe Indicators for Categories
+            // Swipe Indicators for Categories
             const categoriesScroll = document.getElementById('categoriesScroll');
             const swipeIndicator = document.getElementById('swipeIndicator');
             
@@ -1540,22 +2151,19 @@
                     swipeIndicator.classList.add('hidden');
                 });
                 
-                // Also hide on mouse scroll
                 categoriesScroll.addEventListener('wheel', function() {
                     swipeIndicator.classList.add('hidden');
                 });
             }
 
-            // ENHANCED: Category Click with Smooth Scroll
+            // Category Click with Smooth Scroll
             const categoryPills = document.querySelectorAll('.category-pill');
             categoryPills.forEach(pill => {
                 pill.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Remove active class from all pills
                     categoryPills.forEach(p => p.classList.remove('active'));
-                    // Add active class to clicked pill
                     this.classList.add('active');
                     
                     const targetId = this.getAttribute('href');
@@ -1572,7 +2180,7 @@
                 });
             });
 
-            // Search Functionality - CRITICAL
+            // Search Functionality
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
             const allCards = document.querySelectorAll('.product-card, .featured-card');
@@ -1621,11 +2229,10 @@
             searchInput.addEventListener('input', performSearch);
             searchButton.addEventListener('click', performSearch);
 
-            // Product Card Clicks - CRITICAL FUNCTION
+            // Product Card Clicks - FIXED SELECTOR
             const productCards = document.querySelectorAll('.product-card, .featured-card');
             productCards.forEach(card => {
                 card.addEventListener('click', function(e) {
-                    // Don't navigate if clicking subscribe button
                     if (e.target.classList.contains('card-button') || 
                         e.target.closest('.card-button')) {
                         return;
@@ -1640,7 +2247,7 @@
                 });
             });
 
-            // Subscribe Buttons - CRITICAL
+            // Subscribe Buttons
             const subscribeButtons = document.querySelectorAll('.card-button');
             subscribeButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
@@ -1650,6 +2257,101 @@
                     window.open(`https://wa.me/60189554615?text=${encodeURIComponent(message)}`, '_blank');
                 });
             });
+
+            // Image Loading Optimization
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                // Add loaded class when image loads
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+                
+                // Handle image errors
+                img.addEventListener('error', function() {
+                    this.classList.add('error');
+                    this.style.display = 'none';
+                });
+            });
+
+            // ENHANCED: Trust Section Animations
+            function animateCounters() {
+                const counters = document.querySelectorAll('.trust-number');
+                const speed = 200; // The lower the slower
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(() => animateCounters(), 1);
+                    } else {
+                        counter.innerText = target === 15 ? target + 'M+' : target + '+';
+                    }
+                });
+            }
+
+            // Start counter animation when trust section is in view
+            const trustSection = document.querySelector('.trust-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (trustSection) {
+                observer.observe(trustSection);
+            }
+
+            // ENHANCED: Testimonials Slider - FIXED VERSION
+            const testimonialSlider = document.getElementById('testimonialSlider');
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+
+            if (testimonialSlider && prevBtn && nextBtn) {
+                let currentSlide = 0;
+                const slides = testimonialSlider.querySelectorAll('.testimonial-card');
+                
+                function updateSlider() {
+                    const slideWidth = slides[0].offsetWidth + 32; // card width + gap (32px)
+                    testimonialSlider.scrollTo({
+                        left: currentSlide * slideWidth,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Button click handlers
+                prevBtn.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlider();
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentSlide < slides.length - 1) {
+                        currentSlide++;
+                        updateSlider();
+                    }
+                });
+                
+                // Auto slide every 5 seconds
+                setInterval(() => {
+                    if (currentSlide < slides.length - 1) {
+                        currentSlide++;
+                    } else {
+                        currentSlide = 0; // Loop back to start
+                    }
+                    updateSlider();
+                }, 5000);
+                
+                // Initialize slider position
+                updateSlider();
+            }
         });
     </script>
 </body>
