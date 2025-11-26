@@ -652,7 +652,7 @@
         /* ENHANCED: Trust Section */
         .trust-section {
             padding: 4rem 20px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d1a1f 100%);
             color: white;
             text-align: center;
             position: relative;
@@ -666,43 +666,111 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #e4002b, #ff6b6b, #e4002b);
+            background: linear-gradient(90deg, #e4002b, #ff6b6b, #ffd700, #e4002b);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .trust-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(228, 0, 43, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .trust-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto 4rem;
+            position: relative;
+            z-index: 2;
         }
 
         .trust-stat {
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            transition: transform 0.3s ease, background 0.3s ease;
+            padding: 2rem 1rem;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .trust-stat:hover::before {
+            left: 100%;
         }
 
         .trust-stat:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px) scale(1.02);
+            background: linear-gradient(145deg, rgba(228, 0, 43, 0.15), rgba(255, 215, 0, 0.1));
+            border-color: rgba(228, 0, 43, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(228, 0, 43, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 215, 0, 0.5),
+                    0 2px 10px rgba(228, 0, 43, 0.3);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 215, 0, 0.8),
+                    0 2px 15px rgba(228, 0, 43, 0.5),
+                    0 0 40px rgba(255, 215, 0, 0.3);
+            }
         }
 
         .trust-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: #e4002b;
+            color: #ffd700;
             display: block;
             margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(228, 0, 43, 0.3);
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                0 2px 10px rgba(228, 0, 43, 0.3);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse-glow 2s ease-in-out infinite;
         }
 
         .trust-stat span {
             font-size: 1.1rem;
             color: #f0f0f0;
             font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .trust-badges {
@@ -714,45 +782,64 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 2;
         }
 
         .trust-badge {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            gap: 0.8rem;
+            padding: 1.5rem 1.5rem;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            min-width: 140px;
         }
 
         .trust-badge:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.05);
+            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(145deg, rgba(228, 0, 43, 0.15), rgba(255, 215, 0, 0.1));
+            border-color: rgba(228, 0, 43, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(228, 0, 43, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
         .badge-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #e4002b, #ff6b6b);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(228, 0, 43, 0.3);
+        }
+
+        .trust-badge:hover .badge-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
         }
 
         .badge-text {
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: #f0f0f0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .testimonials {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
+            z-index: 2;
         }
 
         .testimonial-slider {
@@ -772,12 +859,33 @@
 
         .testimonial-card {
             flex: 0 0 300px;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 20px;
             text-align: left;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(228, 0, 43, 0.15), rgba(255, 215, 0, 0.1));
+            border-color: rgba(228, 0, 43, 0.3);
+            box-shadow: 0 10px 30px rgba(228, 0, 43, 0.2);
         }
 
         .testimonial-text {
@@ -785,6 +893,8 @@
             margin-bottom: 1.5rem;
             color: #f0f0f0;
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
 
         .testimonial-author {
@@ -796,13 +906,14 @@
         .author-avatar {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
             background: linear-gradient(135deg, #e4002b, #ff6b6b);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(228, 0, 43, 0.3);
         }
 
         .author-info h4 {
@@ -839,6 +950,7 @@
         .slider-btn:hover {
             background: #e4002b;
             border-color: #e4002b;
+            transform: scale(1.1);
         }
 
         /* ENHANCED: FAQ Section */
@@ -1326,7 +1438,7 @@
             <div class="featured-card" data-category="air-conditioners">
                 <div class="popular-badge">MOST SAVED</div>
                 <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/images/home-air-conditioners/s3-q12jarpa/gallery/2010/RAC-ARTCOOL-Gallery-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="Air Conditioner" width="300" height="200" loading="lazy">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c02e1383978554cd5fc761.jpeg" alt="Air Conditioner" width="300" height="200" loading="lazy">
                     <div class="image-error">
                         <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
                         <p>Image not available</p>
@@ -1350,7 +1462,7 @@
             <div class="featured-card" data-category="refrigerators">
                 <div class="popular-badge">BEST VALUE</div>
                 <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/my/image-update/gallery-photo/ref/gc-x257cqes/450x450/GC-X257CQES-450x450-1.jpg/jcr:content/renditions/thum-350x350.jpeg" alt="Refrigerator" width="300" height="200" loading="lazy">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c04bbf32f33909fde04080.jpeg" alt="Refrigerator" width="300" height="200" loading="lazy">
                     <div class="image-error">
                         <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
                         <p>Image not available</p>
@@ -1374,7 +1486,7 @@
             <div class="featured-card" data-category="tv">
                 <div class="popular-badge">TRENDING</div>
                 <div class="card-image">
-                    <img src="https://www.lg.com/content/dam/channel/wcms/sg/products/tvs/nanocell/nano80asa/nanocell-nano80-2025-75-gallery-01.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800" alt="TV" width="300" height="200" loading="lazy">
+                    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/J61lZUuFws89LWOT9kjM/media/68c0dcae32f339045e182e88.jpeg" alt="TV" width="300" height="200" loading="lazy">
                     <div class="image-error">
                         <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 1rem; color: #ccc;"></i>
                         <p>Image not available</p>
@@ -2273,7 +2385,7 @@
                 });
             });
 
-            // ENHANCED: Trust Section Animations
+            // ENHANCED: Trust Section Animations - FIXED FOR MOBILE
             function animateCounters() {
                 const counters = document.querySelectorAll('.trust-number');
                 const speed = 200; // The lower the slower
@@ -2292,19 +2404,34 @@
                 });
             }
 
-            // Start counter animation when trust section is in view
+            // FIXED: Better intersection detection for mobile
             const trustSection = document.querySelector('.trust-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
             if (trustSection) {
+                // Use a more sensitive observer for mobile
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Small delay to ensure animation is visible
+                            setTimeout(() => {
+                                animateCounters();
+                            }, 300);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { 
+                    threshold: 0.3, // Lower threshold for mobile
+                    rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
+                });
+
                 observer.observe(trustSection);
+                
+                // FALLBACK: If intersection observer fails, start after 2 seconds
+                setTimeout(() => {
+                    const firstCounter = document.querySelector('.trust-number');
+                    if (firstCounter && firstCounter.innerText === '0') {
+                        animateCounters();
+                    }
+                }, 2000);
             }
 
             // ENHANCED: Testimonials Slider - FIXED VERSION
